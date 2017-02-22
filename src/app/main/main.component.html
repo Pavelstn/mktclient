@@ -1,0 +1,16 @@
+
+    <h1>Главная страница</h1>
+
+<!--
+    <ul>
+        <li *ngFor="let deal of data.deal_list">
+            &lt;!&ndash;<p>Наименование товара: {{deal.title}}</p>&ndash;&gt;
+            <smallcard [data]="deal"></smallcard>
+
+
+        </li>
+    </ul>
+
+-->
+
+    <smallcard [data]="deal" *ngFor="let deal of data.deal_list"></smallcard>

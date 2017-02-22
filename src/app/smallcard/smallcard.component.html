@@ -1,0 +1,45 @@
+<!--<p>Наименование товара: {{data.title}}</p>
+<p>Цена: {{data.price}}</p>
+
+<div *ngFor="let image of data.images_list">
+    <img src="{{image.thumb}}">
+</div>
+
+
+id: 40
+images_list: Array[4]
+price: 2300
+short_descr: "Электронная сигарета iJust S – универсальная электронная сигарета за 2300 рублей"
+title: "Электронная сигарета iJust S"
+url: ""-->
+
+
+
+
+
+
+<div class="col-sm-4 col-md-3 product_cell" itemscope itemtype="http://schema.org/Product">
+    <a href="/view/{{data.id}}" style="text-decoration: none;">
+        <div class="thumbnail product_thumb">
+            <img src="{{data.images_list[0].thumb}}" itemprop="image" title="{{data.title}}">
+            <div class="product_caption">
+                <div itemprop="name" class="item_title">{{data.title}}</div>
+                <span itemprop="description" style="display: none">{{data.short_descr}}</span>
+
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                    <div class="item_price">{{data.price}} руб.</div>
+                    <meta itemprop="price" content="{{data.price}}">
+                    <meta itemprop="priceCurrency" content="RUB">
+                    <link itemprop="availability" href="http://schema.org/InStock">
+                </div>
+            </div>
+        </div>
+    </a>
+    <div class="add_to_cart_from_main">
+        <button class="btn btn-primary btn-block " role="button" ng-click="add_to_cart(<%= deal.id %>)">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+            В корзину
+        </button>
+
+    </div>
+</div>
