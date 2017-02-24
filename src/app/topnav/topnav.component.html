@@ -14,7 +14,7 @@
                 <!--<li class="active"><a href="#">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>-->
-                <li *ngFor="let category of data.categories"><a href="/category/{{category.aliasname}}">{{category.name}}</a></li>
+                <li *ngFor="let category of data.categories"><a [routerLink]="['category', category.id]" >{{category.name}}</a></li>
 
             </ul>
         </div><!--/.nav-collapse -->

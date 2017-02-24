@@ -4,11 +4,15 @@ import {Routes, RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {MainComponent} from './main/main.component';
+import {DealViewComponent} from './dealview/deal-view.component';
+import {CategoryViewComponent} from './categoryview/category-view.component';
 
 const appRoutes: Routes = [
     /*{ path: '', component: HomeComponent },*/
     { path: '', component: MainComponent },
-    { path: 'about', component: AboutComponent }
+    { path: 'about', component: AboutComponent },
+    { path: 'view/:id', component: DealViewComponent },
+    { path: 'category/:id', component: CategoryViewComponent }
 ];
 
 export const appRoutingProviders: any[] = [];

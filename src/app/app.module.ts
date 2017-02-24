@@ -10,6 +10,9 @@ import {AboutComponent} from './about/about.component';
 import {MainComponent} from './main/main.component';
 import { SmallCardComponent} from './smallcard/smallcard.component';
 import { TopNavComponent} from './topnav/topnav.component';
+import {DealViewComponent} from './dealview/deal-view.component';
+import {CategoryViewComponent} from './categoryview/category-view.component';
+
 
 
 
@@ -20,7 +23,9 @@ import { TopNavComponent} from './topnav/topnav.component';
         AboutComponent,
         MainComponent,
         SmallCardComponent,
-        TopNavComponent
+        TopNavComponent,
+        DealViewComponent,
+        CategoryViewComponent
     ],
     imports: [
         BrowserModule,
