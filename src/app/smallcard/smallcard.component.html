@@ -1,6 +1,6 @@
 <div class="col-sm-4 col-md-3 product_cell" itemscope itemtype="http://schema.org/Product">
     <!--<a href="/view/{{data.id}}" style="text-decoration: none;">-->
-        <a [routerLink]="['view', data.id]" style="text-decoration: none;">
+        <a routerLink="/view/{{data.id}}" style="text-decoration: none;">
         <div class="thumbnail product_thumb">
             <img src="{{data.images_list[0].thumb}}" itemprop="image" title="{{data.title}}">
             <div class="product_caption">
