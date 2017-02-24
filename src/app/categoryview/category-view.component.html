@@ -1,2 +1,5 @@
-Тут будет показываться содержиое каталога<br>
-<h3>Модель {{id}}</h3>
+
+<h3>{{categoryData.cat_name}}</h3>
+
+
+<smallcard [data]="deal" *ngFor="let deal of categoryData.deal_list"></smallcard>

@@ -4,22 +4,24 @@
 import {Component} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
+import {CategoryDataService} from '../services/category-data.service';
 
 @Component({
     selector: 'categoryview',
     template: require('./category-view.component.html'),
-    providers: []
+    providers: [CategoryDataService]
 })
 
 export class CategoryViewComponent {
     id: number;
     private subscription: Subscription;
-
-    constructor(private activateRoute: ActivatedRoute){
+    categoryData={};
+    constructor(private activateRoute: ActivatedRoute, private categoryDataService:CategoryDataService){
         this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
     }
     ngOnInit(){
         console.log("загрузка", this.id);
+        this.categoryDataService.loadData(this.id).subscribe(data => this.categoryData=data);
     }
 
     ngOnDestroy(){
