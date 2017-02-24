@@ -8,10 +8,11 @@ import {routing, appRoutingProviders} from './app.routing';
 import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {MainComponent} from './main/main.component';
-import { SmallCardComponent} from './smallcard/smallcard.component';
-import { TopNavComponent} from './topnav/topnav.component';
+import {SmallCardComponent} from './smallcard/smallcard.component';
+import {TopNavComponent} from './topnav/topnav.component';
 import {DealViewComponent} from './dealview/deal-view.component';
 import {CategoryViewComponent} from './categoryview/category-view.component';
+
 
 
 
