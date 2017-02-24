@@ -5,6 +5,8 @@ import {Component} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {DealDataService} from '../services/deal-data.service';
+import { CarouselModule } from 'ng2-bootstrap';
+
 
 
 @Component({

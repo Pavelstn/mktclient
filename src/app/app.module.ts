@@ -12,7 +12,7 @@ import {SmallCardComponent} from './smallcard/smallcard.component';
 import {TopNavComponent} from './topnav/topnav.component';
 import {DealViewComponent} from './dealview/deal-view.component';
 import {CategoryViewComponent} from './categoryview/category-view.component';
-
+import { CarouselModule } from 'ng2-bootstrap';
 
 
 
@@ -26,13 +26,15 @@ import {CategoryViewComponent} from './categoryview/category-view.component';
         SmallCardComponent,
         TopNavComponent,
         DealViewComponent,
-        CategoryViewComponent
+        CategoryViewComponent,
+
     ],
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
         JsonpModule,
+        CarouselModule.forRoot(),
         routing
     ],
     providers: [appRoutingProviders],
