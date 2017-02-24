@@ -7,13 +7,14 @@ import 'rxjs/add/operator/map';
 @Component({
     selector: 'topnav',
     template: require('./topnav.component.html'),
-    providers: [MainPageService]
+    providers: []
 })
 
 export class TopNavComponent{
     data={};
     constructor(private mainPageService: MainPageService){}
     ngOnInit(){
-        this.mainPageService.getData().subscribe((data)=>this.data=data);
+       // this.mainPageService.getData().subscribe((data)=>this.data=data);
+        this.mainPageService.getData().subscribe(data => this.data=data);
     }
 }

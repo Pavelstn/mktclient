@@ -16,7 +16,7 @@ import { Mpdata } from './mpdata';
 @Component({
     selector: 'main',
     template: require('./main.component.html'),
-    providers: [MainPageService]
+    providers: []
 })
 
 export class MainComponent {
@@ -46,7 +46,11 @@ export class MainComponent {
         // console.log("this.data",this.data);
 
 
-        this.mainPageService.getData().subscribe((data)=>this.data=data);
+        //this.data= this.mainPageService.getData();
+       // this.mainPageService.getData().then(data => this.data = data);
+
+        this.mainPageService.getData().subscribe(data => this.data=data);
+       // console.log("this.data",this.data);
     }
 
 

@@ -11,6 +11,8 @@ import {MainComponent} from './main/main.component';
 import { SmallCardComponent} from './smallcard/smallcard.component';
 import { TopNavComponent} from './topnav/topnav.component';
 
+
+
 @NgModule({
     declarations: [
         AppComponent,
