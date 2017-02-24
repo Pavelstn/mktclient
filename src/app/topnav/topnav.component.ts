@@ -14,7 +14,6 @@ export class TopNavComponent{
     data={};
     constructor(private mainPageService: MainPageService){}
     ngOnInit(){
-       // this.mainPageService.getData().subscribe((data)=>this.data=data);
         this.mainPageService.getData().subscribe(data => this.data=data);
     }
 }

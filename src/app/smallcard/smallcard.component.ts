@@ -2,7 +2,6 @@
  * Created by pavel on 22.02.17.
  */
 
-//import {Directive, HostListener, Input, HostBinding, OnInit} from '@angular/core';
 import {Component, Input} from '@angular/core';
 
 @Component({
@@ -16,8 +15,5 @@ export class SmallCardComponent{
     @Input() data = {};
 
     constructor(){}
-
-
-
 
 }
