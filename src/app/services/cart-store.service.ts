@@ -33,10 +33,17 @@ export class CartStoreService {
         // a -количество
         // t- название (title)
         // i- ссылка на картинку
-        this.get_cart_data();
-        this.cartList.l.push({id: id, a: 1, c: c, t: t, i: i});
-        this.calculate_summ();
-        this.put_cart_data();
+       // this.get_cart_data();
+
+        if(this.check_exist(id)!=null){
+            this.incrementNumber(id, 1);
+        } else{
+            this.cartList.l.push({id: id, a: 1, c: c, t: t, i: i});
+            this.calculate_summ();
+            this.put_cart_data();
+        }
+
+
     }
 
     removeFromCart(id: number) {
