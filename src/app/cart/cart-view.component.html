@@ -14,18 +14,10 @@
                     <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, -1)">
                         <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
                     </div>
-
-             <!--       <input type="text"
-                           class="form-control wide_form"
-                           [value]="item.a"
-                           (keyup)="number_change(item.id, item.a)"
-
-                           style="text-align: center">-->
-
                     <input type="text"
                            class="form-control wide_form"
                            [value]="cartData.l[i].a"
-                            disabled
+                           disabled
                            style="text-align: center">
 
                     <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, 1)">
@@ -44,35 +36,101 @@
 </div>
 
 <div class="row wide_form" ng-if="!create_order_dialog">
-    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3" style="text-align: left;"><h3>Итого:</h3></div>
-    <div class="col-sm-9 col-md-9 col-lg-9 col-xs-9" style="text-align: right;"><h3>{{cartData.s}} руб.</h3>
+    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-3 col-md-offset-3 col-lg-offset-3" style="text-align: right;">
+        <h3>Итого:</h3>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6" style="text-align: left;">
+        <h3>{{cartData.s}} руб.</h3>
     </div>
 </div>
 
+<div class="row" *ngIf="showOrderForm">
+    <form ngNoForm>
+        <div class="row wide_form">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+
+                <div class="form-group">
+                    <label for="customer_name">Имя/Отчество <span class="help-inline" style="color: red">*</span></label>
+                    <input type="text"
+                           class="form-control"
+                           id="customer_name"
+                           placeholder="Имя/Отчество"
+                           [(ngModel)]="orderForm.customer_name"
+                           (ngModelChange)="update_values()">
+                </div>
+
+                <div class="form-group">
+                    <label for="customer_phone">Контактный телефон<span class="help-inline" style="color: red">*</span></label>
+                    <input type="tel"
+                           class="form-control"
+                           id="customer_phone"
+                           placeholder="Телефон"
+                           [(ngModel)]="orderForm.customer_phone"
+                           (ngModelChange)="update_values()">
+                </div>
+
+                <!-- </div>
+                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<b>Доставка</b><br>
+
+                <label>
+                    <input type="radio" name="delivery_options" id="1" value="1" checked>
+                    Курьером по Москве (+<%= Deal.getDelivery(777).ceil %> руб.)
+                    <a href="/delivery" class="color_link">Подробнее</a>
+                </label>-->
+
+                <div class="form-group">
+                    <label for="delivery_adress">Адрес доставки</label>
+                    <input type="text"
+                           class="form-control"
+                           id="delivery_adress"
+                           placeholder="Адрес доставки"
+                           [(ngModel)]="orderForm.delivery_adress"
+                           (ngModelChange)="update_values()">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарии к заказу</label>
+                    <input type="text"
+                           class="form-control"
+                           id="comment"
+                           placeholder="Комментарии к заказу"
+                           [(ngModel)]="orderForm.comment"
+                           (ngModelChange)="update_values()">
+                </div>
+                <!--  <b>Способ оплаты <span class="help-inline" style="color: red">*</span></b><br>-->
+                <!--<label>
+                    <input type="radio" name="payment_options" id="1" value="1" checked>
+                    Наличными при получении
+                </label>-->
+
+            </div>
+        </div>
+    </form>
+
+
+</div>
 
 <div class="row wide_form">
-    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
-        <span ng-if="!create_order_dialog">
-            <button type="button" class="btn btn-primary btn-block" ng-click="open_create_order_dialog()"
-                    ng-disabled="cart.cart_list.s==0">Оформить
-                заказ
+    <div class="col-xs-12 col-sm-3 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+        <span *ngIf="!showOrderForm">
+            <button
+                type="button"
+                class="btn btn-primary btn-block"
+                (click)="open_create_order_dialog()">
+                Оформить заказ
             </button>
         </span>
-        <span ng-if="create_order_dialog">
-            <button type="button" class="btn btn-primary btn-block" ng-click="create_order()"
-                    ng-disabled="disable_create_order_button" ng-if="!checkout_start">Оформить
-                заказ
+
+        <span *ngIf="showOrderForm">
+            <button
+                type="button"
+                class="btn btn-primary btn-block"
+                (click)="create_order_dialog()"
+                [disabled]="!orderForm.formValid">
+                Оформить заказ
             </button>
-            <button type="button" class="btn btn-primary btn-block" disabled ng-if="checkout_start">
-                <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i></button>
-
         </span>
-
     </div>
-
-    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2 col-sm-offset-6 col-md-offset-6 col-lg-offset-8">
-        <button type="button" class="btn btn-default btn-block" ng-click="hide_cart_modal()">Продолжить выбор
-        </button>
-    </div>
-
 </div>
+
+
