@@ -24,7 +24,10 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-                <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="add_to_cart(dealData.id)">
+                <button type="button"
+                        class="btn btn-primary btn-lg btn-block"
+                        (click)="add_to_cart(dealData.id, dealData.price, dealData.title, dealData.images_list[0].thumb)"
+                >
                     <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                     Купить
                 </button>

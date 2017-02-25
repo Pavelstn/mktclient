@@ -6,7 +6,7 @@ import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {DealDataService} from '../services/deal-data.service';
 import { CarouselModule } from 'ng2-bootstrap';
-
+import { CartStoreService} from '../services/cart-store.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class DealViewComponent {
 
     private subscription: Subscription;
 
-    constructor(private activateRoute: ActivatedRoute, private dealDataService:DealDataService ){
+    constructor(private activateRoute: ActivatedRoute, private dealDataService:DealDataService, private cartStoreService:CartStoreService ){
        // this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
         this.subscription = activateRoute.params.subscribe(params=>{
             this.id=params['id'];
@@ -38,4 +38,11 @@ export class DealViewComponent {
     ngOnDestroy(){
         this.subscription.unsubscribe();
     }
+
+    add_to_cart(id:number, c:any, t:any, i:any){
+        console.log("id:", id);
+        this.cartStoreService.addNewItem(id, c, t, i);
+    }
+
+
 }
