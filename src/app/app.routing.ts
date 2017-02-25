@@ -6,10 +6,12 @@ import {AboutComponent} from './about/about.component';
 import {MainComponent} from './main/main.component';
 import {DealViewComponent} from './dealview/deal-view.component';
 import {CategoryViewComponent} from './categoryview/category-view.component';
+import {CartViewComponent} from './cart/cart-view.component';
 
 const appRoutes: Routes = [
     /*{ path: '', component: HomeComponent },*/
     { path: '', component: MainComponent },
+    { path: 'cart', component: CartViewComponent },
     { path: 'about', component: AboutComponent },
     { path: 'view/:id', component: DealViewComponent },
     { path: 'category/:id', component: CategoryViewComponent }

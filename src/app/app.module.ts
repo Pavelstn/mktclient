@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
+import {CarouselModule } from 'ng2-bootstrap';
 
 import {AppComponent} from './app.component';
 import {routing, appRoutingProviders} from './app.routing';
@@ -12,7 +13,8 @@ import {SmallCardComponent} from './smallcard/smallcard.component';
 import {TopNavComponent} from './topnav/topnav.component';
 import {DealViewComponent} from './dealview/deal-view.component';
 import {CategoryViewComponent} from './categoryview/category-view.component';
-import { CarouselModule } from 'ng2-bootstrap';
+import {CartViewComponent} from './cart/cart-view.component';
+
 
 
 
@@ -27,6 +29,7 @@ import { CarouselModule } from 'ng2-bootstrap';
         TopNavComponent,
         DealViewComponent,
         CategoryViewComponent,
+        CartViewComponent,
 
     ],
     imports: [

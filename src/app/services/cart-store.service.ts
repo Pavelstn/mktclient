@@ -50,7 +50,7 @@ export class CartStoreService {
 
     }
 
-    changeNumber(id: number, n:number) {
+    incrementNumber(id: number, n:number) {
         this.get_cart_data();
         let index = this.check_exist(id);
 
@@ -62,6 +62,26 @@ export class CartStoreService {
             if (this.cartList.l[index].a > 999) {
                 this.cartList.l[index].a = 999;
             }
+        }
+
+        this.calculate_summ();
+        this.put_cart_data();
+    }
+
+    changeNumber(id: number, n:number) {
+        this.get_cart_data();
+        let index = this.check_exist(id);
+
+        if (n < 1) {
+            n = 1;
+        }
+        if (n > 999) {
+            n = 999;
+        }
+
+        if (index != null) {
+            this.cartList.l[index].a = n;
+
         }
 
         this.calculate_summ();
