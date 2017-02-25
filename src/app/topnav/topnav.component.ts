@@ -15,9 +15,21 @@ import 'rxjs/add/operator/map';
 export class TopNavComponent{
     data={};
     cartData={};
-    constructor(private mainPageService: MainPageService, private cartStoreService:CartStoreService){}
+    constructor(private mainPageService: MainPageService, private cartStoreService:CartStoreService){
+      this.cartStoreService.cartChange.subscribe((cartList)=>{this.cartData= cartList});
+    }
     ngOnInit(){
         this.mainPageService.getData().subscribe(data => this.data=data);
-        this.cartData= this.cartStoreService.cartList;
+        //this.cartData= this.cartStoreService.cartList;
+
+
+
+      //  todosService.todos
+
+       // this.cartStoreService.subscribe()
+    }
+
+    ngOnDestroy() {
+      //  this._cartSubscription?.unsubscribe();
     }
 }

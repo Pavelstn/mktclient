@@ -3,11 +3,16 @@
  */
 import {Injectable} from '@angular/core';
 import {LocalStorage} from "./local-storage"
+import {Subject} from "rxjs";
+//import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 
 export class CartStoreService {
     cartList: {l: any[], s: number};
+
+
+    cartChange: Subject<any> = new Subject<any>();
     private localStorage: LocalStorage;
 
     constructor() {
@@ -77,6 +82,8 @@ export class CartStoreService {
          expireDate.setDate(expireDate.getDate() + 7);
          Cookies.set('cart_list', JSON.stringify(this.cart_list), {'expires': expireDate, 'path': '/'});*/
         this.localStorage.setData("cart_list", this.cartList);
+
+        this.cartChange.next(this.cartList);
     };
 
     private calculate_summ() {
