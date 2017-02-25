@@ -22,14 +22,17 @@ export class DealViewComponent {
     private subscription: Subscription;
 
     constructor(private activateRoute: ActivatedRoute, private dealDataService:DealDataService ){
-       // this.id = activateRoute.snapshot.params['id'];
-        this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
+       // this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
+        this.subscription = activateRoute.params.subscribe(params=>{
+            this.id=params['id'];
+            this.dealDataService.loadData(this.id).subscribe(data => this.dealData=data);
+        });
 
 
     }
     ngOnInit(){
-        console.log("загрузка", this.id);
-        this.dealDataService.loadData(this.id).subscribe(data => this.dealData=data);
+        //console.log("загрузка", this.id);
+       // this.dealDataService.loadData(this.id).subscribe(data => this.dealData=data);
     }
 
     ngOnDestroy(){
