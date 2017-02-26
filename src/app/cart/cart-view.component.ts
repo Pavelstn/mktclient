@@ -53,7 +53,7 @@ export class CartViewComponent {
         this.orderForm.checkValidateForm();
     }
 
-    create_order_dialog(){
-
+    create_order(){
+        console.log("create order", this.cartStoreService.createOrder(this.orderForm));
     }
 }

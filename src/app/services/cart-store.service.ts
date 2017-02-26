@@ -5,6 +5,15 @@ import {Injectable} from '@angular/core';
 import {LocalStorage} from "./local-storage"
 import {Subject} from "rxjs";
 //import {BehaviorSubject} from "rxjs";
+import { Jsonp} from '@angular/http';
+
+import {OrderForm} from '../cart/order-form';
+import {Observable} from 'rxjs/Observable';
+import {Http} from '@angular/http';
+import {Response, Headers, URLSearchParams} from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 
@@ -15,29 +24,29 @@ export class CartStoreService {
     cartChange: Subject<any> = new Subject<any>();
     private localStorage: LocalStorage;
 
-    constructor() {
+    constructor(private http: Http) {
         this.localStorage = new LocalStorage("cart");
         this.cartList = {l: [], s: 0};
 
     }
 
-    init(){
+    init() {
         this.get_cart_data();
         this.calculate_summ();
         this.put_cart_data();
     }
 
-    addNewItem(id:number, c:any, t:any, i:any) {
+    addNewItem(id: number, c: any, t: any, i: any) {
         // id- id товара в базе
         // с- цена
         // a -количество
         // t- название (title)
         // i- ссылка на картинку
-       // this.get_cart_data();
+        // this.get_cart_data();
 
-        if(this.check_exist(id)!=null){
+        if (this.check_exist(id) != null) {
             this.incrementNumber(id, 1);
-        } else{
+        } else {
             this.cartList.l.push({id: id, a: 1, c: c, t: t, i: i});
             this.calculate_summ();
             this.put_cart_data();
@@ -57,7 +66,7 @@ export class CartStoreService {
 
     }
 
-    incrementNumber(id: number, n:number) {
+    incrementNumber(id: number, n: number) {
         this.get_cart_data();
         let index = this.check_exist(id);
 
@@ -75,7 +84,7 @@ export class CartStoreService {
         this.put_cart_data();
     }
 
-    changeNumber(id: number, n:number) {
+    changeNumber(id: number, n: number) {
         this.get_cart_data();
         let index = this.check_exist(id);
 
@@ -130,9 +139,9 @@ export class CartStoreService {
 
     };
 
-    check_exist(id: number):number {
+    check_exist(id: number): number {
         this.get_cart_data();
-        for (let i=0;i< this.cartList.l.length;i++) {
+        for (let i = 0; i < this.cartList.l.length; i++) {
             if (this.cartList.l[i].id == id) {
                 return i;
             }
@@ -144,5 +153,38 @@ export class CartStoreService {
         this.cartList = {l: [], s: 0};
         this.put_cart_data();
     };
+
+    createOrder(orderForm:OrderForm){
+        let cartList=[];
+        for(let i=0; i< this.cartList.l.length; i++){
+            cartList.push({id:this.cartList.l[i].id, a:this.cartList.l[i].a})
+        }
+
+        let data={
+            shop_id:2
+        };
+/*
+ let data={
+            shop_id:2,
+            orderform:orderForm,
+            cartlist:cartList
+        };
+*/
+
+       let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var params = new URLSearchParams();
+        params.set('shop_id', "2");
+        return this.http.post('http://localhost:8080/userapi/create_order/?callback=JSONP_CALLBACK', params.toString(), { headers: headers })
+            .map(res => res.json())
+            .catch((error:any) =>{return Observable.throw(error);});
+
+/*
+        const body = JSON.stringify(data);
+        console.log("body",body);
+        let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
+        return this.http.post('http://localhost:8080/userapi/create_order', body, { headers: headers })
+            .map((resp:Response)=>resp.json())
+            .catch((error:any) =>{return Observable.throw(error);});*/
+    }
 
 }
