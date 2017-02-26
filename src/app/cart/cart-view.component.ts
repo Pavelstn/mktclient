@@ -54,6 +54,10 @@ export class CartViewComponent {
     }
 
     create_order(){
-        console.log("create order", this.cartStoreService.createOrder(this.orderForm));
+        //console.log("create order", );
+
+
+        this.cartStoreService.createOrder(this.orderForm).subscribe((data) => {console.log("data", data)});
+
     }
 }

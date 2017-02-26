@@ -155,14 +155,15 @@ export class CartStoreService {
     };
 
     createOrder(orderForm:OrderForm){
+
         let cartList=[];
         for(let i=0; i< this.cartList.l.length; i++){
             cartList.push({id:this.cartList.l[i].id, a:this.cartList.l[i].a})
         }
 
-        let data={
+        /*let data={
             shop_id:2
-        };
+        };*/
 /*
  let data={
             shop_id:2,
@@ -174,7 +175,9 @@ export class CartStoreService {
        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var params = new URLSearchParams();
         params.set('shop_id', "2");
-        return this.http.post('http://localhost:8080/userapi/create_order/?callback=JSONP_CALLBACK', params.toString(), { headers: headers })
+        params.set('orderform', JSON.stringify(orderForm));
+        params.set('cartlist', JSON.stringify(cartList));
+        return this.http.post('http://localhost:8080/userapi/create_order', params.toString(), { headers: headers })
             .map(res => res.json())
             .catch((error:any) =>{return Observable.throw(error);});
 
