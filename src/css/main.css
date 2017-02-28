@@ -1,0 +1,29 @@
+.progress_bar{
+    text-align: center
+}
+.product_caption{
+    color: #333;
+    height: 80px;
+}
+.product_thumb{
+    /*height: 480px;*/
+    padding-bottom: 30px;
+    margin-bottom: -20px;
+}
+.product_cell{
+    margin-bottom: 40px;
+}
+.thumb_img{
+    width: 100%;
+}
+
+.wide_form{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+@media screen and (max-width: 767px) {
+.product_cell{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+}
