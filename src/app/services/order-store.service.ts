@@ -5,13 +5,15 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class OrderStoreService {
-    code:string;
-    comment:string;
-    customer_phone:string;
-    customer_name:string;
-    delivery_adress:string;
-    status:string;
-    summ:string;
-    list:any[];
-    constructor(){}
+    code: string;
+    comment: string;
+    customer_phone: string;
+    customer_name: string;
+    delivery_adress: string;
+    status: string;
+    summ: string;
+    list: any[];
+
+    constructor() {
+    }
 }

@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import { Response} from '@angular/http';
 import {ConfigService} from '../services/config.service';
 
-
 @Injectable()
 
 export class CategoryDataService{
@@ -18,7 +17,6 @@ export class CategoryDataService{
             .get(this.config.dataServer+'/userapi/category/'+this.config.shop_id.toString()+'/'+id+'/?callback=JSONP_CALLBACK')
             .map((resp:Response)=>{
                 let data= resp.json();
-                console.log("deal Data", data);
                 return data;
             });
     }

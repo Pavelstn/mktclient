@@ -19,7 +19,6 @@ export class DealDataService{
             .get(this.config.dataServer+'/userapi/deal/'+this.config.shop_id.toString()+'/'+id+'/?callback=JSONP_CALLBACK')
             .map((resp:Response)=>{
                 let data= resp.json();
-                console.log("deal Data", data);
                 return data;
             });
     }

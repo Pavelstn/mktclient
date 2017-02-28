@@ -5,10 +5,8 @@
 import {Component, Input} from '@angular/core';
 import { CartStoreService} from '../services/cart-store.service';
 
-
 @Component({
     selector: 'smallcard',
-
     template: require('./smallcard.component.html'),
 
 })
@@ -19,7 +17,6 @@ export class SmallCardComponent{
     constructor(private cartStoreService:CartStoreService){}
 
     add_to_cart(id:number, c:any, t:any, i:any){
-        console.log("id:", id);
         this.cartStoreService.addNewItem(id, c, t, i);
     }
 

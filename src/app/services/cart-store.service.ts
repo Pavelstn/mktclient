@@ -21,14 +21,12 @@ import 'rxjs/add/observable/throw';
 export class CartStoreService {
     cartList: {l: any[], s: number};
 
-
     cartChange: Subject<any> = new Subject<any>();
     private localStorage: LocalStorage;
 
-    constructor(private http: Http, private config:ConfigService) {
+    constructor(private http: Http, private config: ConfigService) {
         this.localStorage = new LocalStorage("cart");
         this.cartList = {l: [], s: 0};
-
     }
 
     init() {
@@ -52,8 +50,6 @@ export class CartStoreService {
             this.calculate_summ();
             this.put_cart_data();
         }
-
-
     }
 
     removeFromCart(id: number) {
@@ -64,7 +60,6 @@ export class CartStoreService {
         }
         this.calculate_summ();
         this.put_cart_data();
-
     }
 
     incrementNumber(id: number, n: number) {
@@ -115,11 +110,7 @@ export class CartStoreService {
 
 
     private put_cart_data() {
-        /*var expireDate = new Date();
-         expireDate.setDate(expireDate.getDate() + 7);
-         Cookies.set('cart_list', JSON.stringify(this.cart_list), {'expires': expireDate, 'path': '/'});*/
         this.localStorage.setData("cart_list", this.cartList);
-
         this.cartChange.next(this.cartList);
     };
 
@@ -155,33 +146,29 @@ export class CartStoreService {
         this.put_cart_data();
     };
 
-    resetCart(){
-        this.cartList.l=[];
+    resetCart() {
+        this.cartList.l = [];
         this.localStorage.resetStorage();
         this.calculate_summ();
         this.put_cart_data();
     }
 
     createOrder(orderForm: OrderForm) {
-
         let cartList = [];
         for (let i = 0; i < this.cartList.l.length; i++) {
             cartList.push({id: this.cartList.l[i].id, a: this.cartList.l[i].a})
         }
-
 
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         var params = new URLSearchParams();
         params.set('shop_id', this.config.shop_id.toString());
         params.set('orderform', JSON.stringify(orderForm));
         params.set('cartlist', JSON.stringify(cartList));
-        return this.http.post(this.config.dataServer+'/userapi/create_order', params.toString(), {headers: headers})
+        return this.http.post(this.config.dataServer + '/userapi/create_order', params.toString(), {headers: headers})
             .map(res => res.json())
             .catch((error: any) => {
                 return Observable.throw(error);
             });
-
-
     }
 
 }

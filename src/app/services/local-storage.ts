@@ -24,7 +24,7 @@ export class LocalStorage {
                 return false;
             }
         } else {
-            console.log("Локальные хранилища не поддерживаются данным браузером");
+           // console.log("Локальные хранилища не поддерживаются данным браузером");
             return false;
         }
     };
@@ -57,7 +57,7 @@ export class LocalStorage {
             }
 
         } else {
-            console.log("Локальные хранилища не поддерживаются данным браузером");
+            //console.log("Локальные хранилища не поддерживаются данным браузером");
         }
     };
 
@@ -75,9 +75,7 @@ export class LocalStorage {
             if (data_raw != null) {
                 var ldata = JSON.parse(data_raw);
                 var list = JSON.parse(ldata.list);
-                // var list = ldata.list;
                 var aaaa = JSON.stringify(data);
-                //list.push(aaaa);
                 list[key] = aaaa;
                 var cccc = JSON.stringify(list);
                 ldata.list = cccc;
@@ -90,7 +88,7 @@ export class LocalStorage {
                 return false;
             }
         } else {
-            console.log("Локальные хранилища не поддерживаются данным браузером");
+          //  console.log("Локальные хранилища не поддерживаются данным браузером");
             return false;
         }
     };
@@ -110,7 +108,7 @@ export class LocalStorage {
                 }
 
             } else {
-                console.log("Данные не сохранились");
+                //console.log("Данные не сохранились");
                 this.init();
                 return null;
             }

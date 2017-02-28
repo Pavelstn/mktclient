@@ -22,21 +22,19 @@ export class DealViewComponent {
     private subscription: Subscription;
 
     constructor(private titleService: Title, private activateRoute: ActivatedRoute, private dealDataService:DealDataService, private cartStoreService:CartStoreService ){
-       // this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
         this.subscription = activateRoute.params.subscribe(params=>{
             this.id=params['id'];
             this.dealDataService.loadData(this.id).subscribe((data) => {
                 this.dealData=data;
                 this.titleService.setTitle( data.title );
             });
-
         });
 
 
     }
+
     ngOnInit(){
-        //console.log("загрузка", this.id);
-       // this.dealDataService.loadData(this.id).subscribe(data => this.dealData=data);
+
     }
 
     ngOnDestroy(){
@@ -44,7 +42,6 @@ export class DealViewComponent {
     }
 
     add_to_cart(id:number, c:any, t:any, i:any){
-        console.log("id:", id);
         this.cartStoreService.addNewItem(id, c, t, i);
     }
 

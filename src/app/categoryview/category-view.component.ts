@@ -18,7 +18,6 @@ export class CategoryViewComponent {
     private subscription: Subscription;
     categoryData={};
     constructor(private titleService: Title, private activateRoute: ActivatedRoute, private categoryDataService:CategoryDataService){
-       // this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
         this.subscription = activateRoute.params.subscribe(params=>{
             this.id=params['id'];
             this.categoryDataService.loadData(this.id).subscribe((data) => {
@@ -28,8 +27,6 @@ export class CategoryViewComponent {
         });
     }
     ngOnInit(){
-       // console.log("загрузка", this.id);
-       // this.categoryDataService.loadData(this.id).subscribe(data => this.categoryData=data);
     }
 
     ngOnDestroy(){

@@ -20,16 +20,9 @@ export class TopNavComponent{
     }
     ngOnInit(){
         this.mainPageService.getData().subscribe(data => this.data=data);
-        //this.cartData= this.cartStoreService.cartList;
-
-
-
-      //  todosService.todos
-
-       // this.cartStoreService.subscribe()
     }
 
     ngOnDestroy() {
-      //  this._cartSubscription?.unsubscribe();
+
     }
 }
