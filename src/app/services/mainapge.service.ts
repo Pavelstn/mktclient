@@ -3,16 +3,16 @@ import { Jsonp} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Response} from '@angular/http';
-
+import {ConfigService} from '../services/config.service';
 
 
 @Injectable()
 export class MainPageService{
     data: Observable<any>;
-    constructor(private jsonp: Jsonp){ }
+    constructor(private jsonp: Jsonp, private config:ConfigService){ }
     loadData(){
         this.data= this.jsonp
-            .get('http://192.168.1.34:8080/userapi/shop/2?callback=JSONP_CALLBACK')
+            .get(this.config.dataServer+'/userapi/shop/'+this.config.shop_id.toString()+'?callback=JSONP_CALLBACK')
             .map((resp:Response)=>{
                 let data= resp.json();
                 console.log("loadData", data);

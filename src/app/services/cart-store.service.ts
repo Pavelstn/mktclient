@@ -8,6 +8,7 @@ import {Subject} from "rxjs";
 import {Jsonp} from '@angular/http';
 
 import {OrderForm} from '../cart/order-form';
+import {ConfigService} from '../services/config.service';
 import {Observable} from 'rxjs/Observable';
 import {Http} from '@angular/http';
 import {Response, Headers, URLSearchParams} from '@angular/http';
@@ -24,7 +25,7 @@ export class CartStoreService {
     cartChange: Subject<any> = new Subject<any>();
     private localStorage: LocalStorage;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private config:ConfigService) {
         this.localStorage = new LocalStorage("cart");
         this.cartList = {l: [], s: 0};
 
@@ -171,10 +172,10 @@ export class CartStoreService {
 
         let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         var params = new URLSearchParams();
-        params.set('shop_id', "2");
+        params.set('shop_id', this.config.shop_id.toString());
         params.set('orderform', JSON.stringify(orderForm));
         params.set('cartlist', JSON.stringify(cartList));
-        return this.http.post('http://192.168.1.34:8080/userapi/create_order', params.toString(), {headers: headers})
+        return this.http.post(this.config.dataServer+'/userapi/create_order', params.toString(), {headers: headers})
             .map(res => res.json())
             .catch((error: any) => {
                 return Observable.throw(error);
