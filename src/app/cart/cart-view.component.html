@@ -116,7 +116,8 @@
             <button
                 type="button"
                 class="btn btn-primary btn-block"
-                (click)="open_create_order_dialog()">
+                (click)="open_create_order_dialog()"
+                [disabled]="cartData.s<=0">
                 Оформить заказ
             </button>
         </span>

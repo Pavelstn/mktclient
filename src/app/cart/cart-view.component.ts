@@ -62,19 +62,26 @@ export class CartViewComponent {
 
 
         this.cartStoreService.createOrder(this.orderForm).subscribe((data) => {
-           // console.log("data", data);
-            this.cartStoreService.resetCart();
+            console.log("data", data);
+            if(data.status==1){
+                this.cartStoreService.resetCart();
 
-            this.orderStoreService.code=data.code;
-            this.orderStoreService.comment=data.comment;
-            this.orderStoreService.customer_name=data.customer_name;
-            this.orderStoreService.customer_phone=data.customer_phone;
-            this.orderStoreService.delivery_adress=data.delivery_adress;
-            this.orderStoreService.summ=data.summ;
-            this.orderStoreService.status=data.status;
-            this.orderStoreService.list=data.list;
+                this.orderStoreService.code=data.code;
+                this.orderStoreService.comment=data.comment;
+                this.orderStoreService.customer_name=data.customer_name;
+                this.orderStoreService.customer_phone=data.customer_phone;
+                this.orderStoreService.delivery_adress=data.delivery_adress;
+                this.orderStoreService.summ=data.summ;
+                this.orderStoreService.status=data.status;
+                this.orderStoreService.list=data.list;
 
-            this.router.navigate(['/order']);
+                this.router.navigate(['/order']);
+            }else{
+                alert("Возникла ошибка, попробуйте перезагрузить страницу и попробовать снова")
+
+            }
+
+
         });
 
     }
