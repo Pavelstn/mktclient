@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 import {LocalStorage} from "./local-storage"
 import {Subject} from "rxjs";
 //import {BehaviorSubject} from "rxjs";
-import { Jsonp} from '@angular/http';
+import {Jsonp} from '@angular/http';
 
 import {OrderForm} from '../cart/order-form';
 import {Observable} from 'rxjs/Observable';
@@ -154,40 +154,33 @@ export class CartStoreService {
         this.put_cart_data();
     };
 
-    createOrder(orderForm:OrderForm){
+    resetCart(){
+        this.cartList.l=[];
+        this.localStorage.resetStorage();
+        this.calculate_summ();
+        this.put_cart_data();
+    }
 
-        let cartList=[];
-        for(let i=0; i< this.cartList.l.length; i++){
-            cartList.push({id:this.cartList.l[i].id, a:this.cartList.l[i].a})
+    createOrder(orderForm: OrderForm) {
+
+        let cartList = [];
+        for (let i = 0; i < this.cartList.l.length; i++) {
+            cartList.push({id: this.cartList.l[i].id, a: this.cartList.l[i].a})
         }
 
-        /*let data={
-            shop_id:2
-        };*/
-/*
- let data={
-            shop_id:2,
-            orderform:orderForm,
-            cartlist:cartList
-        };
-*/
 
-       let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
         var params = new URLSearchParams();
         params.set('shop_id', "2");
         params.set('orderform', JSON.stringify(orderForm));
         params.set('cartlist', JSON.stringify(cartList));
-        return this.http.post('http://192.168.1.34:8080/userapi/create_order', params.toString(), { headers: headers })
+        return this.http.post('http://192.168.1.34:8080/userapi/create_order', params.toString(), {headers: headers})
             .map(res => res.json())
-            .catch((error:any) =>{return Observable.throw(error);});
+            .catch((error: any) => {
+                return Observable.throw(error);
+            });
 
-/*
-        const body = JSON.stringify(data);
-        console.log("body",body);
-        let headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
-        return this.http.post('http://localhost:8080/userapi/create_order', body, { headers: headers })
-            .map((resp:Response)=>resp.json())
-            .catch((error:any) =>{return Observable.throw(error);});*/
+
     }
 
 }

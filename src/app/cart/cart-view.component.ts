@@ -61,7 +61,9 @@ export class CartViewComponent {
 
 
         this.cartStoreService.createOrder(this.orderForm).subscribe((data) => {
-            console.log("data", data);
+           // console.log("data", data);
+            this.cartStoreService.resetCart();
+
             this.orderStoreService.code=data.code;
             this.orderStoreService.comment=data.comment;
             this.orderStoreService.customer_name=data.customer_name;
