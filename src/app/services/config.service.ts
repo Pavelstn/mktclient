@@ -7,6 +7,6 @@ import {Injectable} from '@angular/core';
 export class ConfigService {
     user_id:number=1;
     shop_id:number=2;
-    dataServer:string= "http://192.168.1.34:8080";
+    dataServer:string= "http://mkt4u.ru";
     constructor(){}
 }
