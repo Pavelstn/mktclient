@@ -1,1 +1,32 @@
-<h3>Подробности заказа</h3>
+<h3>Заказ № {{orderStoreService.code}}</h3>
+<div class="row">
+    <table class="table table-striped">
+        <tbody>
+        <tr>
+            <th>Арт.</th>
+            <th>Наименование</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+        </tr>
+
+        <tr *ngFor="let item of orderStoreService.list">
+
+            <td>{{item.art}}</td>
+            <td>{{item.title}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.price}}</td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <h3>Итого {{orderStoreService.summ}} руб</h3><br>
+    <b>Получатель </b>{{orderStoreService.customer_name}}<br>
+    <b>Контактный телефон: </b>{{orderStoreService.customer_phone}}<br>
+    <b>Адрес доставки: </b>{{orderStoreService.delivery_adress}}<br>
+    <b>Коментарий: </b>{{orderStoreService.comment}}<br>
+
+</div>
+
+

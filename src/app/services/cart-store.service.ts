@@ -177,7 +177,7 @@ export class CartStoreService {
         params.set('shop_id', "2");
         params.set('orderform', JSON.stringify(orderForm));
         params.set('cartlist', JSON.stringify(cartList));
-        return this.http.post('http://localhost:8080/userapi/create_order', params.toString(), { headers: headers })
+        return this.http.post('http://192.168.1.34:8080/userapi/create_order', params.toString(), { headers: headers })
             .map(res => res.json())
             .catch((error:any) =>{return Observable.throw(error);});
 

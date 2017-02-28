@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
 import { MainPageService} from '../services/mainapge.service';
 import 'rxjs/add/operator/map';
 import { CartStoreService} from '../services/cart-store.service';
+import { OrderStoreService} from '../services/order-store.service';
 import { OrderForm} from './order-form';
 import {Router} from '@angular/router';
 
@@ -19,7 +20,7 @@ export class CartViewComponent {
     cartData={};
     orderForm:OrderForm;
     showOrderForm:boolean;
-    constructor(private cartStoreService:CartStoreService, private router: Router){
+    constructor(private cartStoreService:CartStoreService, private router: Router, private orderStoreService:OrderStoreService){
         this.orderForm= new OrderForm();
         this.showOrderForm= false;
         this.cartStoreService.cartChange.subscribe((cartList)=>{
@@ -61,8 +62,18 @@ export class CartViewComponent {
 
         this.cartStoreService.createOrder(this.orderForm).subscribe((data) => {
             console.log("data", data);
+            this.orderStoreService.code=data.code;
+            this.orderStoreService.comment=data.comment;
+            this.orderStoreService.customer_name=data.customer_name;
+            this.orderStoreService.customer_phone=data.customer_phone;
+            this.orderStoreService.delivery_adress=data.delivery_adress;
+            this.orderStoreService.summ=data.summ;
+            this.orderStoreService.status=data.status;
+            this.orderStoreService.list=data.list;
+
             this.router.navigate(['/order']);
         });
 
     }
 }
+
