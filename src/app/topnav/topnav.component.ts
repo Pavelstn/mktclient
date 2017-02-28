@@ -3,7 +3,7 @@
  */
 import {Component, Input} from '@angular/core';
 import { MainPageService} from '../services/mainapge.service';
-import { CartStoreService} from '../services/cart-store.service';
+
 
 import 'rxjs/add/operator/map';
 @Component({
@@ -14,9 +14,9 @@ import 'rxjs/add/operator/map';
 
 export class TopNavComponent{
     data={};
-    cartData={};
-    constructor(private mainPageService: MainPageService, private cartStoreService:CartStoreService){
-      this.cartStoreService.cartChange.subscribe((cartList)=>{this.cartData= cartList});
+
+    constructor(private mainPageService: MainPageService, ){
+
     }
     ngOnInit(){
         this.mainPageService.getData().subscribe(data => this.data=data);

@@ -15,6 +15,7 @@ import {DealViewComponent} from './dealview/deal-view.component';
 import {CategoryViewComponent} from './categoryview/category-view.component';
 import {CartViewComponent} from './cart/cart-view.component';
 import {OrderComponent} from './order/order.component';
+import {CartButtonComponent} from './cart/cart-button.component';
 
 
 
@@ -32,6 +33,7 @@ import {OrderComponent} from './order/order.component';
         CategoryViewComponent,
         CartViewComponent,
         OrderComponent,
+        CartButtonComponent,
 
     ],
     imports: [
