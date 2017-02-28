@@ -3,6 +3,7 @@
  */
 import {Component} from '@angular/core';
 import { MainPageService} from '../services/mainapge.service';
+import { Title }     from '@angular/platform-browser';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -13,8 +14,12 @@ import 'rxjs/add/operator/map';
 
 export class MainComponent {
     data={};
-    constructor(private mainPageService: MainPageService){ }
+    constructor(private titleService: Title, private mainPageService: MainPageService){ }
     ngOnInit(){
-        this.mainPageService.getData().subscribe(data => this.data=data);
+        this.mainPageService.getData().subscribe((data) => {
+            this.data=data;
+            this.titleService.setTitle( data.name );
+        });
+
     }
 }

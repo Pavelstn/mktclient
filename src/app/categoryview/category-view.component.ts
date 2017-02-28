@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {CategoryDataService} from '../services/category-data.service';
+import { Title }     from '@angular/platform-browser';
 
 @Component({
     selector: 'categoryview',
@@ -16,11 +17,14 @@ export class CategoryViewComponent {
     id: number;
     private subscription: Subscription;
     categoryData={};
-    constructor(private activateRoute: ActivatedRoute, private categoryDataService:CategoryDataService){
+    constructor(private titleService: Title, private activateRoute: ActivatedRoute, private categoryDataService:CategoryDataService){
        // this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
         this.subscription = activateRoute.params.subscribe(params=>{
             this.id=params['id'];
-            this.categoryDataService.loadData(this.id).subscribe(data => this.categoryData=data);
+            this.categoryDataService.loadData(this.id).subscribe((data) => {
+                this.categoryData=data;
+                this.titleService.setTitle( data.cat_name );
+            });
         });
     }
     ngOnInit(){

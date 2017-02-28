@@ -7,7 +7,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {DealDataService} from '../services/deal-data.service';
 import { CarouselModule } from 'ng2-bootstrap';
 import { CartStoreService} from '../services/cart-store.service';
-
+import { Title }     from '@angular/platform-browser';
 
 @Component({
     selector: 'dealview',
@@ -21,11 +21,15 @@ export class DealViewComponent {
 
     private subscription: Subscription;
 
-    constructor(private activateRoute: ActivatedRoute, private dealDataService:DealDataService, private cartStoreService:CartStoreService ){
+    constructor(private titleService: Title, private activateRoute: ActivatedRoute, private dealDataService:DealDataService, private cartStoreService:CartStoreService ){
        // this.subscription = activateRoute.params.subscribe(params=>this.id=params['id']);
         this.subscription = activateRoute.params.subscribe(params=>{
             this.id=params['id'];
-            this.dealDataService.loadData(this.id).subscribe(data => this.dealData=data);
+            this.dealDataService.loadData(this.id).subscribe((data) => {
+                this.dealData=data;
+                this.titleService.setTitle( data.title );
+            });
+
         });
 
 

@@ -8,7 +8,7 @@ import { CartStoreService} from '../services/cart-store.service';
 import { OrderStoreService} from '../services/order-store.service';
 import { OrderForm} from './order-form';
 import {Router} from '@angular/router';
-
+import { Title }     from '@angular/platform-browser';
 
 @Component({
     selector: 'cart',
@@ -20,7 +20,7 @@ export class CartViewComponent {
     cartData={};
     orderForm:OrderForm;
     showOrderForm:boolean;
-    constructor(private cartStoreService:CartStoreService, private router: Router, private orderStoreService:OrderStoreService){
+    constructor(private titleService: Title, private cartStoreService:CartStoreService, private router: Router, private orderStoreService:OrderStoreService){
         this.orderForm= new OrderForm();
         this.showOrderForm= false;
         this.cartStoreService.cartChange.subscribe((cartList)=>{
@@ -31,6 +31,7 @@ export class CartViewComponent {
     }
     ngOnInit(){
         this.cartData= this.cartStoreService.cartList;
+        this.titleService.setTitle( "Корзина" );
     }
 
 
