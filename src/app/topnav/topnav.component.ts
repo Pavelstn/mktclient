@@ -3,7 +3,7 @@
  */
 import {Component, Input} from '@angular/core';
 import { MainPageService} from '../services/mainapge.service';
-
+import {ConfigService} from '../services/config.service';
 
 import 'rxjs/add/operator/map';
 @Component({
@@ -15,7 +15,7 @@ import 'rxjs/add/operator/map';
 export class TopNavComponent{
     data={};
 
-    constructor(private mainPageService: MainPageService, ){
+    constructor(private mainPageService: MainPageService,  public config: ConfigService){
 
     }
     ngOnInit(){
