@@ -1,26 +1,26 @@
 <div class="col-sm-4 col-md-3 product_cell" itemscope itemtype="http://schema.org/Product">
     <a routerLink="/view/{{data.id}}" style="text-decoration: none;">
         <div class=" product_thumb">
-            <img class="thumb_img" src="{{data.images_list[0].thumb}}" itemprop="image" title="{{data.title}}">
+            <div class="thumb_img" [style.background]="'url(' + data.images_list[0].thumb + ')'"></div>
             <div class="product_caption">
-                <div itemprop="name" class="item_title">{{data.title}}</div>
+                <div itemprop="name" class="item_title text-center">{{data.title}}</div>
                 <span itemprop="description" style="display: none">{{data.short_descr}}</span>
-
-                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                    <div class="item_price">{{data.price}} руб.</div>
-                    <meta itemprop="price" content="{{data.price}}">
-                    <meta itemprop="priceCurrency" content="RUB">
-                    <link itemprop="availability" href="http://schema.org/InStock">
-                </div>
             </div>
         </div>
     </a>
-    <div class="add_to_cart_from_main">
-        <button class="btn btn-primary btn-block " role="button"
-                (click)="add_to_cart(data.id, data.price, data.title, data.images_list[0].thumb)">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center add_to_cart_from_main"
+             (click)="add_to_cart(data.id, data.price, data.title, data.images_list[0].thumb)">
             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
             В корзину
-        </button>
-
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-center" itemprop="offers" itemscope
+             itemtype="http://schema.org/Offer">
+            <div class="item_price">{{data.price}} руб.</div>
+            <meta itemprop="price" content="{{data.price}}">
+            <meta itemprop="priceCurrency" content="RUB">
+            <link itemprop="availability" href="http://schema.org/InStock">
+        </div>
+        <hr width="80%">
     </div>
 </div>
