@@ -3,7 +3,10 @@
         <!-- ---------------------------------- -->
         <carousel>
             <slide *ngFor="let image of dealData.images_list">
-                <img src="{{image.medium}}" alt="...">
+               <!-- <div>sdsd
+                    <img src="{{image.medium}}" alt="..."></div>-->
+                <div class="deal_img" [style.background]="'url(' + image.medium + ')'"></div>
+
             </slide>
         </carousel>
         <!-- ---------------------------------- -->
