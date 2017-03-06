@@ -66,3 +66,6 @@
         [innerHTML]="dealData.description"></div>
 
 </div>
+<hr>
+<h2>Вам также могут понравиться:</h2>
+<smallcard [data]="deal" *ngFor="let deal of  (dealsList.deal_list ? dealsList.deal_list.slice(0,8): [])"></smallcard>
