@@ -16,7 +16,7 @@ import {CategoryViewComponent} from './categoryview/category-view.component';
 import {CartViewComponent} from './cart/cart-view.component';
 import {OrderComponent} from './order/order.component';
 import {CartButtonComponent} from './cart/cart-button.component';
-
+import {Ng2PageScrollModule} from 'ng2-page-scroll';
 
 
 
@@ -42,6 +42,7 @@ import {CartButtonComponent} from './cart/cart-button.component';
         HttpModule,
         JsonpModule,
         CarouselModule.forRoot(),
+        Ng2PageScrollModule.forRoot(),
         routing
     ],
     providers: [appRoutingProviders],

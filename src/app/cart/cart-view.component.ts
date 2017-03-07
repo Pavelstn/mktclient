@@ -1,14 +1,16 @@
 /**
  * Created by pavel on 25.02.17.
  */
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import { MainPageService} from '../services/mainapge.service';
 import 'rxjs/add/operator/map';
 import { CartStoreService} from '../services/cart-store.service';
 import { OrderStoreService} from '../services/order-store.service';
 import { OrderForm} from './order-form';
 import {Router} from '@angular/router';
-import { Title }     from '@angular/platform-browser';
+import { Title, DOCUMENT }     from '@angular/platform-browser';
+import {PageScrollInstance, PageScrollService, PageScrollConfig} from 'ng2-page-scroll';
+
 
 @Component({
     selector: 'cart',
@@ -20,7 +22,10 @@ export class CartViewComponent {
     cartData={};
     orderForm:OrderForm;
     showOrderForm:boolean;
-    constructor(private titleService: Title, private cartStoreService:CartStoreService, private router: Router, private orderStoreService:OrderStoreService){
+    constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any, private titleService: Title, private cartStoreService:CartStoreService, private router: Router, private orderStoreService:OrderStoreService){
+        //PageScrollConfig.defaultScrollOffset = -70;
+        PageScrollConfig.defaultDuration = 1250;
+
         this.orderForm= new OrderForm();
         this.showOrderForm= false;
         this.cartStoreService.cartChange.subscribe((cartList)=>{
@@ -48,6 +53,7 @@ export class CartViewComponent {
 
     open_create_order_dialog(){
         this.showOrderForm= true;
+        this.goToBottom()
     }
     update_values(){
         this.orderForm.checkValidateForm();
@@ -71,7 +77,11 @@ export class CartViewComponent {
             }
 
         });
-
     }
+
+    public goToBottom(): void {
+        let pageScrollInstance: PageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#order_dialog');
+        this.pageScrollService.start(pageScrollInstance);
+    };
 }
 

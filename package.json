@@ -24,13 +24,15 @@
     "@angular/platform-browser": "^2.4.1",
     "@angular/platform-browser-dynamic": "^2.4.1",
     "@angular/router": "^3.4.1",
+    "@types/core-js": "^0.9.34",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "jquery": "^2.2.4",
+    "ng2-page-scroll": "^4.0.0-beta.4",
+    "ng2-scroll-to": "^1.0.2",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.1",
-    "zone.js": "^0.7.4",
-    "@types/core-js": "^0.9.34"
+    "zone.js": "^0.7.4"
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.35",
