@@ -112,7 +112,7 @@
                 type="button"
                 class="btn btn-primary btn-block"
                 (click)="create_order()"
-                [disabled]="!orderForm.formValid|| cartData.s<=0" >
+                [disabled]="!orderForm.formValid|| cartData.s<=0||dataSending" >
                 Оформить заказ
             </button>
         </span>

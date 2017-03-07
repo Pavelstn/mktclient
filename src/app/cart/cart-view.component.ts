@@ -22,12 +22,14 @@ export class CartViewComponent {
     cartData={};
     orderForm:OrderForm;
     showOrderForm:boolean;
+    dataSending:boolean;
     constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any, private titleService: Title, private cartStoreService:CartStoreService, private router: Router, private orderStoreService:OrderStoreService){
         //PageScrollConfig.defaultScrollOffset = -70;
         PageScrollConfig.defaultDuration = 1250;
 
         this.orderForm= new OrderForm();
         this.showOrderForm= false;
+        this.dataSending= false;
         this.cartStoreService.cartChange.subscribe((cartList)=>{
             this.cartData= cartList;
         });
@@ -60,6 +62,7 @@ export class CartViewComponent {
     }
 
     create_order(){
+        this.dataSending= true;
         this.cartStoreService.createOrder(this.orderForm).subscribe((data) => {
             if(data.status==1){
                 this.cartStoreService.resetCart();
