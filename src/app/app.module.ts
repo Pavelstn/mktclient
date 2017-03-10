@@ -17,7 +17,7 @@ import {CartViewComponent} from './cart/cart-view.component';
 import {OrderComponent} from './order/order.component';
 import {CartButtonComponent} from './cart/cart-button.component';
 import {Ng2PageScrollModule} from 'ng2-page-scroll';
-
+import {OrderBy} from './pipes/orderby.pipe';
 
 
 
@@ -34,6 +34,7 @@ import {Ng2PageScrollModule} from 'ng2-page-scroll';
         CartViewComponent,
         OrderComponent,
         CartButtonComponent,
+        OrderBy,
 
     ],
     imports: [

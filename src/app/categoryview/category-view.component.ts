@@ -11,7 +11,7 @@ import {PageScrollInstance, PageScrollService, PageScrollConfig} from 'ng2-page-
 @Component({
     selector: 'categoryview',
     template: require('./category-view.component.html'),
-    providers: [CategoryDataService]
+    providers: [CategoryDataService],
 })
 
 export class CategoryViewComponent {

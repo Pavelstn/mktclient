@@ -75,6 +75,14 @@
     filter:none !important;
 }
 
+.cartbutton{
+    color: #edd80a !important;
+}
+.cartbutton:hover{
+    text-decoration: none;
+    color: #dbed11 !important;
+}
+
 @media screen and (max-width: 767px) {
     .container {
         padding-left: 0px !important;

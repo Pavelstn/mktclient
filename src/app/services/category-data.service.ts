@@ -17,6 +17,11 @@ export class CategoryDataService{
             .get(this.config.dataServer+'/userapi/category/'+this.config.shop_id.toString()+'/'+id+'/?callback=JSONP_CALLBACK')
             .map((resp:Response)=>{
                 let data= resp.json();
+                for(let index=0; index<data.deal_list.length; index++){
+                    if(data.deal_list[index].rate==null){
+                        data.deal_list[index].rate=0;
+                    }
+                }
                 return data;
             });
     }

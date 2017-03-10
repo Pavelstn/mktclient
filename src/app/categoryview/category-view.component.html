@@ -1,2 +1,3 @@
 <h3 id="category-top">{{categoryData.cat_name}}</h3>
-<smallcard [data]="deal" *ngFor="let deal of categoryData.deal_list"></smallcard>
+<smallcard [data]="deal" *ngFor="let deal of categoryData.deal_list | orderBy : ['-rate']"></smallcard>
+

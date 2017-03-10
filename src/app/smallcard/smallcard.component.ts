@@ -19,5 +19,4 @@ export class SmallCardComponent{
     add_to_cart(id:number, c:any, t:any, i:any){
         this.cartStoreService.addNewItem(id, c, t, i);
     }
-
 }
