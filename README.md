@@ -1,28 +1,28 @@
-## mktclient
-> This project is generated with [generator-angular2-typescript](https://github.com/shibbir/generator-angular2-typescript) version 0.10.6.
+# Mktclient
 
-## Installation
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.3.
 
-```bash
-$ npm install -g typescript
-$ npm start
-```
+## Development server
 
-## Production Build
-```bash
-$ npm run build
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Running Unit Tests
-```bash
-$ npm test
-```
+## Code scaffolding
 
-## Running End-to-End Tests
-```bash
-# make sure you have a running app
-$ npm run e2e
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
-## License
-<a href="https://opensource.org/licenses/Apache-2.0">Apache-2.0 License</a>
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

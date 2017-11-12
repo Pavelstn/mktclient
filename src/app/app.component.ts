@@ -1,25 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {Http} from '@angular/http';
-import 'bootstrap/dist/css/bootstrap.css';
-import '../css/main.css';
-import { MainPageService} from './services/mainapge.service';
-import { CartStoreService} from './services/cart-store.service';
-import { OrderStoreService} from './services/order-store.service';
-import { ConfigService} from './services/config.service';
-
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { OnInit } from '@angular/core';
 
 @Component({
-    selector: 'my-app',
-    template: require('./app.component.html'),
-    providers: [MainPageService, CartStoreService, OrderStoreService, ConfigService]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-
-export class AppComponent implements OnInit {
-    constructor(private mainPageService: MainPageService, private cartStoreService:CartStoreService, orderStoreService:OrderStoreService, private configService:ConfigService){}
-
-    ngOnInit() {
-        console.log('AppComponent initializing...');
-        this.mainPageService.loadData();
-        this.cartStoreService.init();
-    }
+export class AppComponent {
+  constructor(
+    private router: Router,
+  ) {}
+  title = 'app';
 }
