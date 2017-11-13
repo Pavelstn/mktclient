@@ -11,7 +11,9 @@ import { HomeModule } from './modules/home/home.module';
 
 
 import { LocalStorage} from './services/local-storage.service';
+import { LoadDataService} from './services/load-data.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {ConfigService} from './services/config.service'
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     HttpModule,
   ],
-  providers: [LocalStorage],
+  providers: [LocalStorage, LoadDataService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

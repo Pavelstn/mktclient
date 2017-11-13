@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Route} from '@angular/router';
+
 
 @Component({
   selector: 'app-index',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
-
-  constructor() { }
+  mainpage;
+  constructor(private route: ActivatedRoute) {
+    this.mainpage = this.route.snapshot.data['mainpage'];
+  }
 
   ngOnInit() {
+    console.log('this.mainpage', this.mainpage);
   }
 
 }
