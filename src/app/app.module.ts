@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -26,6 +26,7 @@ import {ConfigService} from './services/config.service'
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
+    JsonpModule
   ],
   providers: [LocalStorage, LoadDataService, ConfigService],
   bootstrap: [AppComponent]

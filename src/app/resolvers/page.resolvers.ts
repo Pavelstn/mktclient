@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot} from '@angular/router';
-// import {Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {LoadDataService} from '../services/load-data.service';
+
 
 @Injectable()
 export class MainPageResolver implements Resolve<any> {
-  constructor(private ls: LoadDataService) {
-  }
+  constructor(private ls: LoadDataService) {}
 
-  resolve(page: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return this.ls.getMainPge().then(data => data);
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> | Observable<any> {
+    return this.ls.getMainPge();
   }
 }
+
