@@ -5,7 +5,7 @@ import {LoadDataService} from '../../../services/load-data.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  styleUrls: ['./index.component.sass']
 })
 export class IndexComponent implements OnInit {
   mainpage;

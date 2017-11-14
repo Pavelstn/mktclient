@@ -9,6 +9,7 @@ import { IndexComponent } from './index/index.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {  RouterModule } from '@angular/router';
+import { SmallCardComponent } from './small-card/small-card.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import {  RouterModule } from '@angular/router';
     RouterModule,
     HomeRoutingModule,
   ],
-  declarations: [IndexComponent]
+  declarations: [IndexComponent, SmallCardComponent]
 })
 export class HomeModule { }

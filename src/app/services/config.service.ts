@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
 
   user_id = 1;
-  shop_id = 3;
-  // dataServer = 'http://mkt4u.ru';
-  dataServer = 'http://localhost:8080';
+  shop_id = 2;
+   dataServer = 'http://mkt4u.ru';
+  // dataServer = 'http://localhost:8080';
   projetctName = 'SmartWatch';
 
   constructor() { }

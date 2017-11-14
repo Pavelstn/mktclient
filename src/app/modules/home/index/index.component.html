@@ -1,3 +1,10 @@
-<p>
-  index works!sad asd sds
-</p>
+<div class="home_layout">
+  <div fxLayout="row wrap" fxLayout.xs="column" class="container">
+    <div fxFlex="33.33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let item of mainpage.deals_list">
+      <app-small-card [data]="item" ></app-small-card>
+    </div>
+  </div>
+</div>
+
+
+
