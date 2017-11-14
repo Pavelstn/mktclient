@@ -10,6 +10,7 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {  RouterModule } from '@angular/router';
 import { SmallCardComponent } from './small-card/small-card.component';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,6 @@ import { SmallCardComponent } from './small-card/small-card.component';
     RouterModule,
     HomeRoutingModule,
   ],
-  declarations: [IndexComponent, SmallCardComponent]
+  declarations: [IndexComponent, SmallCardComponent, TopNavComponent]
 })
 export class HomeModule { }

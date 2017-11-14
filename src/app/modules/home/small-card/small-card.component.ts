@@ -15,4 +15,9 @@ export class SmallCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  add_to_cart(id){
+    console.log('id', id);
+  }
+
+
 }
