@@ -13,11 +13,11 @@
 
 <div fxLayout="column" class="smallcard" itemscope itemtype="http://schema.org/Product">
   <a routerLink="/view/{{data.id}}" style="text-decoration: none;">
-    <div fxFlex="auto" class=" product_thumb">
+    <div fxFlex="auto" class="product_thumb">
       <img class="thumb_img" src="{{data.thumb}}" itemprop="image" title="{{data.title}}">
       <div class="product_caption">
         <div itemprop="name" class="item_title">{{data.title}}</div>
-        <span itemprop="description" style="display: none">{{data.short_descr}}</span>
+      <!--  <span itemprop="description" style="display: none">{{data.short_descr}}</span>-->
 
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
           <div class="item_price">{{data.price}} руб.</div>
@@ -28,13 +28,13 @@
       </div>
     </div>
   </a>
-  <div fxFlex="40px" class="add_to_cart_from_main">
+  <!--<div fxFlex="40px" class="add_to_cart_from_main">
     <button class="btn btn-primary btn-block " role="button"
             (click)="add_to_cart(data.id)">
       <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
       В корзину
     </button>
 
-  </div>
+  </div>-->
 </div>
 
