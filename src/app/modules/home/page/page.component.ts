@@ -10,23 +10,26 @@ import {NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation} from 'ngx-galle
 })
 export class PageComponent implements OnInit {
   pages;
+  page;
   galleryOptions: NgxGalleryOptions[];
   // galleryImages: NgxGalleryImage[];
-  galleryImages= [];
+  galleryImages = [];
+
   constructor(private route: ActivatedRoute, private ls: LoadDataService) {
   }
 
   ngOnInit() {
     this.pages = this.route.snapshot.data['page'];
-    console.log('this.pages', this.pages);
-    for (let i = 0; i < this.pages.pages[0].images_list.length; i++) {
-      const item = this.pages.pages[0].images_list[i];
+    this.page = this.pages.pages[0];
+    console.log('this.page', this.page);
+    for (let i = 0; i < this.page.images_list.length; i++) {
+      const item = this.page.images_list[i];
       this.galleryImages.push({small: item.thumb, medium: item.medium, big: item.original});
     }
 
     this.galleryOptions = [
       {
-        width: '600px',
+        width: '100%',
         height: '600px',
         thumbnailsColumns: 4,
         imageAnimation: NgxGalleryAnimation.Slide
