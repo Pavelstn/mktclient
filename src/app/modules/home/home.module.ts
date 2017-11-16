@@ -13,6 +13,8 @@ import { SmallCardComponent } from './small-card/small-card.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { PageComponent } from './page/page.component';
 import { HomeComponent } from './home.component';
+import { NgxGalleryModule } from 'ngx-gallery';
+
 
 @NgModule({
   imports: [
@@ -22,6 +24,7 @@ import { HomeComponent } from './home.component';
     ReactiveFormsModule,
     RouterModule,
     HomeRoutingModule,
+    NgxGalleryModule,
   ],
   declarations: [IndexComponent, SmallCardComponent, TopNavComponent, PageComponent, HomeComponent]
 })
