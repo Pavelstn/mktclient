@@ -1,17 +1,4 @@
-<!--<div fxLayout="column" class="smallcard">
-  <div fxFlex="auto">
-    <img class="thumb_img" src="{{data.thumb}}" itemprop="image" title="{{data.title}}">
-  </div>
-  <div fxFlex="40px">
-    {{data.title}}
-  </div>
-
-</div>-->
-
-
-
-
-<div fxLayout="column" class="smallcard" itemscope itemtype="http://schema.org/Product">
+<div fxLayout="column" fxLayoutAlign="space-between" class="smallcard hover-animation" itemscope itemtype="http://schema.org/Product">
   <a routerLink="/view/{{data.id}}" style="text-decoration: none;">
     <div fxFlex="auto" class="product_thumb">
       <img class="thumb_img" src="{{data.thumb}}" itemprop="image" title="{{data.title}}">
@@ -28,13 +15,13 @@
       </div>
     </div>
   </a>
-  <!--<div fxFlex="40px" class="add_to_cart_from_main">
+  <div fxFlex="40px" class="add_to_cart_from_main">
     <button class="btn btn-primary btn-block " role="button"
             (click)="add_to_cart(data.id)">
       <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
       В корзину
     </button>
 
-  </div>-->
+  </div>
 </div>
 

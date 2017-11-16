@@ -8,19 +8,33 @@ body
 
   // Medium devices (tablets, 768px and up)
   @media (min-width: 768px)
-    width: 768px
+    width: 690px
     margin-left: auto
     margin-right: auto
 
   // Large devices (desktops, 992px and up)
   @media (min-width: 992px)
-    width: 992px!important
+    width: 930px!important
     margin-left: auto
     margin-right: auto
 
 
   // Extra large devices (large desktops, 1200px and up)
   @media (min-width: 1200px)
-    width: 1200px!important
+    width: 1110px!important
     margin-left: auto
     margin-right: auto
+
+
+.hover-animation:hover
+  animation: fade_out  0.7s 1 forwards
+
+
+
+@keyframes fade_out
+  from
+    opacity: 1
+  50%
+    opacity: 0.8
+  to
+    opacity: 0.7
