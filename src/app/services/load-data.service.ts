@@ -24,4 +24,13 @@ export class LoadDataService {
       });
   }
 
+  getPage(deal_id): Observable<any[]> {
+    return this.jsonp.get(`${this.config.dataServer}/api/page/${this.config.shop_id.toString()}/${deal_id}?callback=JSONP_CALLBACK`)
+      .map(function (res: Response) {
+        return res.json() || {};
+      }).catch(function (error: any) {
+        return Observable.throw(error);
+      });
+  }
+
 }

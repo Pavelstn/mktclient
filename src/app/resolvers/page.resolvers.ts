@@ -13,3 +13,11 @@ export class MainPageResolver implements Resolve<any> {
   }
 }
 
+@Injectable()
+export class PageResolver implements Resolve<any> {
+  constructor(private ls: LoadDataService) {}
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<any> | Observable<any> {
+    return this.ls.getPage(route.params['id']);
+  }
+}
+

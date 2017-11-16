@@ -11,6 +11,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {  RouterModule } from '@angular/router';
 import { SmallCardComponent } from './small-card/small-card.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
+import { PageComponent } from './page/page.component';
+import { HomeComponent } from './home.component';
 
 @NgModule({
   imports: [
@@ -21,6 +23,6 @@ import { TopNavComponent } from './top-nav/top-nav.component';
     RouterModule,
     HomeRoutingModule,
   ],
-  declarations: [IndexComponent, SmallCardComponent, TopNavComponent]
+  declarations: [IndexComponent, SmallCardComponent, TopNavComponent, PageComponent, HomeComponent]
 })
 export class HomeModule { }

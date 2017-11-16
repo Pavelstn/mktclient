@@ -1,22 +1,42 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {MainPageResolver} from '../../resolvers/page.resolvers';
+import {MainPageResolver, PageResolver} from '../../resolvers/page.resolvers';
 import {IndexComponent} from './index/index.component';
+import {PageComponent} from './page/page.component';
+import { HomeComponent } from './home.component';
 
-const routes: Routes = [
-  {
-    path: 'home',
-    component: IndexComponent,
-    resolve: {
-      mainPage: MainPageResolver
-    }
-  },
-];
+const routes: Routes = [{
+  path: 'home',
+  component: HomeComponent,
+  children: [
+    {
+      path: '',
+      component: IndexComponent,
+      resolve: {
+        mainPage: MainPageResolver
+      }
+    },{
+      path: 'page/:id',
+      component: PageComponent,
+      resolve: {
+        page: PageResolver
+      }
+    },
+  ]
+
+  /*  {
+      path: 'home',
+      component: IndexComponent,
+      resolve: {
+        mainPage: MainPageResolver
+      }
+    },*/
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [MainPageResolver]
+  providers: [MainPageResolver, PageResolver]
 })
 export class HomeRoutingModule {
 }
