@@ -13,7 +13,8 @@ import { HomeModule } from './modules/home/home.module';
 import { LocalStorage} from './services/local-storage.service';
 import { LoadDataService} from './services/load-data.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {ConfigService} from './services/config.service'
+import { ConfigService } from './services/config.service';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {ConfigService} from './services/config.service'
     HttpModule,
     JsonpModule
   ],
-  providers: [LocalStorage, LoadDataService, ConfigService],
+  providers: [LocalStorage, LoadDataService, ConfigService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

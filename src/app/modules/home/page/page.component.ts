@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Route} from '@angular/router';
 import {LoadDataService} from '../../../services/load-data.service';
+import {CartService} from '../../../services/cart.service';
 import {NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation} from 'ngx-gallery';
 
 @Component({
@@ -15,7 +16,7 @@ export class PageComponent implements OnInit {
   // galleryImages: NgxGalleryImage[];
   galleryImages = [];
 
-  constructor(private route: ActivatedRoute, private ls: LoadDataService) {
+  constructor(private cs: CartService, private route: ActivatedRoute, private ls: LoadDataService) {
   }
 
   ngOnInit() {
@@ -52,6 +53,11 @@ export class PageComponent implements OnInit {
     ];
 
 
+  }
+
+  add_to_cart(id: number, c: any, t: any, i: any) {
+    console.log('click');
+    this.cs.addNewItem(id, c, t, i);
   }
 
 }

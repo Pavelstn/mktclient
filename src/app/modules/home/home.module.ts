@@ -14,6 +14,8 @@ import { TopNavComponent } from './top-nav/top-nav.component';
 import { PageComponent } from './page/page.component';
 import { HomeComponent } from './home.component';
 import { NgxGalleryModule } from 'ngx-gallery';
+import { CartWidgetComponent } from './cart-widget/cart-widget.component';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -26,6 +28,6 @@ import { NgxGalleryModule } from 'ngx-gallery';
     HomeRoutingModule,
     NgxGalleryModule,
   ],
-  declarations: [IndexComponent, SmallCardComponent, TopNavComponent, PageComponent, HomeComponent]
+  declarations: [IndexComponent, SmallCardComponent, TopNavComponent, PageComponent, HomeComponent, CartWidgetComponent, CartComponent]
 })
 export class HomeModule { }

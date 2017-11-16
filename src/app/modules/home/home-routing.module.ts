@@ -3,7 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {MainPageResolver, PageResolver} from '../../resolvers/page.resolvers';
 import {IndexComponent} from './index/index.component';
 import {PageComponent} from './page/page.component';
-import { HomeComponent } from './home.component';
+import {HomeComponent} from './home.component';
+import {CartComponent} from './cart/cart.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -15,13 +16,16 @@ const routes: Routes = [{
       resolve: {
         mainPage: MainPageResolver
       }
-    },{
+    }, {
       path: 'page/:id',
       component: PageComponent,
       resolve: {
         page: PageResolver
       }
-    },
+    }, {
+      path: 'cart',
+      component: CartComponent,
+    }
   ]
 
   /*  {
