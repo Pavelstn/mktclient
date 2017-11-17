@@ -99,9 +99,10 @@ export class CartService {
         this.cartList = <any> resolve;
       },
       reject => {
+      console.log('Случилось очень странное событие, и это надо отметить');
         this.cartList = {l: [], s: 0};
       });
-
+    console.log('get_cart_data this.cartList', this.cartList);
   }
 
   private put_cart_data() {
