@@ -1,4 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {CartService} from '../../../services/cart.service';
 
 @Component({
   selector: 'app-small-card',
@@ -9,14 +10,14 @@ export class SmallCardComponent implements OnInit {
 
   @Input() data = {};
 
-  constructor() {
+  constructor(private cs: CartService) {
   }
 
   ngOnInit() {
   }
 
-  add_to_cart(id){
-    console.log('id', id);
+  add_to_cart(id: number, c: any, t: any, i: any) {
+    this.cs.addNewItem(id, c, t, i);
   }
 
 
