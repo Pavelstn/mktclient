@@ -10,48 +10,23 @@ import {CartData} from '../classes/cart-data';
 
 @Injectable()
 export class CartService {
-  // А что вообще надо для корзины?
-  // добавление/ удаление товара
-  // увеличение/ уменьшение количества единиц товара
-  // сохранение данных в локальном хранилище
-
-  // запускаем сервис, открываем локальное хранилище, берем оттуда данные (если они есть) записываем в переменные сервиса
-
-
   cartList = {l: [], s: 0};
-  // cartChange: Subject<any> = new Subject<any>();
   cartChange: any;
   private localStorage: LocalStorage;
 
   constructor(private http: Http, private config: ConfigService) {
-    // console.log('А сколько раз у нас запускается синглтон?');
     this.localStorage = new LocalStorage('cart');
     this.cartChange = new EventEmitter();
-     this.init();
+   // this.init();
+    this.get_cart_data();
   }
 
   init() {
 
 
-    this.get_cart_data();
+   // this.get_cart_data();
+    this.cartChange.emit(this.cartList);
   }
-
-  /*
-    private get_cart_data() {
-
-      this.localStorage.getData('cart_list').then(resolve => {
-          this.cartList = <CartData> resolve;
-          console.log('get_cart_data this.cartList', this.cartList);
-
-        },
-        reject => {
-          console.log('Случилось очень странное событие, и это надо отметить');
-          this.cartList = {l: [], s: 0};
-        });
-
-    }
-  */
-
 
   addNewItem(id: number, c: any, t: any, i: any) {
     // id- id товара в базе
@@ -60,13 +35,23 @@ export class CartService {
     // t- название (title)
     // i- ссылка на картинку
     // this.get_cart_data();
-    this.cartChange.emit(this.cartList);
+    // this.cartChange.emit(this.cartList);
+    if (this.check_exist(id) != null) {
+      this.incrementNumber(id, 1);
+      console.log('incrementNumber Item');
+    } else {
+      this.cartList.l.push({id: id, a: 1, c: c, t: t, i: i});
+      this.cartList.s = this.calculate_summ();
+      console.log('addNewItem', this.cartList);
+      this.put_cart_data();
+
+    }
+
   }
 
   private get_cart_data() {
     this.localStorage.getData('cart_list').then(resolve => {
       this.cartList = <any>resolve;
-      console.log('get_cart_data', this.cartList);
       this.cartList.s = this.calculate_summ();
       this.put_cart_data();
     }, reject => {
@@ -77,10 +62,12 @@ export class CartService {
 
 
   private put_cart_data() {
-    this.localStorage.setData('cart_list', this.cartList);
-    // this.cartChange.next(this.cartList);
-    this.cartChange.emit(this.cartList);
-    console.log('put_cart_data this.cartList', this.cartList);
+    this.localStorage.setData('cart_list', this.cartList).then(resolve => {
+      this.cartChange.emit(this.cartList);
+    }, reject => {
+      console.log('Неудачное сохранение корзины', reject);
+    });
+
   }
 
   private calculate_summ() {
@@ -91,5 +78,95 @@ export class CartService {
     return summ;
   }
 
+  removeFromCart(id: number) {
+    this.localStorage.getData('cart_list').then(resolve => {
+      this.cartList = <any>resolve;
+      let index = this.check_exist(id);
+      if (index != null) {
+        this.cartList.l.splice(index, 1);
+      }
+      this.cartList.s = this.calculate_summ();
+      // this.put_cart_data();
+    }, reject => {
+      console.log('Такого хранилища нет', reject);
+      this.cartList = {l: [], s: 0};
+    });
+  }
+
+
+  incrementNumber(id: number, n: number) {
+    this.localStorage.getData('cart_list').then(resolve => {
+      this.cartList = <any>resolve;
+      let index = this.check_exist(id);
+      if (index != null) {
+        this.cartList.l[index].a += n;
+        if (this.cartList.l[index].a < 1) {
+          this.cartList.l[index].a = 1;
+        }
+        if (this.cartList.l[index].a > 999) {
+          this.cartList.l[index].a = 999;
+        }
+      }
+      this.cartList.s = this.calculate_summ();
+      // this.put_cart_data();
+
+    }, reject => {
+      console.log('Такого хранилища нет', reject);
+      this.cartList = {l: [], s: 0};
+    });
+  }
+
+  changeNumber(id: number, n: number) {
+    this.localStorage.getData('cart_list').then(resolve => {
+      this.cartList = <any>resolve;
+      let index = this.check_exist(id);
+      if (n < 1) {
+        n = 1;
+      }
+      if (n > 999) {
+        n = 999;
+      }
+      if (index != null) {
+        this.cartList.l[index].a = n;
+      }
+      this.cartList.s = this.calculate_summ();
+      this.put_cart_data();
+
+    }, reject => {
+      console.log('Такого хранилища нет', reject);
+      this.cartList = {l: [], s: 0};
+    });
+  }
+
+
+  check_exist(id: number): number {
+    // this.get_cart_data();
+    for (let i = 0; i < this.cartList.l.length; i++) {
+      if (this.cartList.l[i].id === id) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+  get_cart_info() {
+    let c = 0;
+    for (let i in this.cartList.l) {
+      c += this.cartList.l[i].a;
+    }
+    return {amount: c, costs: this.cartList.s};
+  }
+
+  reset_cart() {
+    this.cartList = {l: [], s: 0};
+    this.put_cart_data();
+  }
+
+  resetCart() {
+    this.cartList.l = [];
+    this.localStorage.resetStorage();
+    this.calculate_summ();
+    this.put_cart_data();
+  }
 
 }

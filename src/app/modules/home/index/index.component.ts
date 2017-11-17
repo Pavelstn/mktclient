@@ -14,14 +14,7 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-
-/*    this.ls.getMainPge().subscribe((data) => {
-      console.log('data', data);
-    });
-    console.log('this.mainpage', this.mainpage);*/
     this.mainpage = this.route.snapshot.data['mainPage'];
-    console.log('this.mainpage', this.mainpage);
-
   }
 
 }
