@@ -21,6 +21,7 @@ export class CartComponent implements OnInit {
     });
   }
 
+/*
 
   delete_item(id: number) {
     this.cs.removeFromCart(id);
@@ -34,5 +35,6 @@ export class CartComponent implements OnInit {
 
     this.cs.changeNumber(id, n);
   }
+*/
 
 }

@@ -16,8 +16,9 @@ export class CartWidgetComponent implements OnInit {
   ngOnInit() {
     this.cs.cartChange.subscribe((cartList) => {
       this.cartData = cartList;
-      console.log('this.cartData', this.cartData);
+      console.log('cart widget this.cartData', this.cartData);
     });
+    this.cs.init();
   }
 
 }
