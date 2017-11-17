@@ -6,23 +6,27 @@ import {ConfigService} from '../services/config.service';
 import {Observable} from 'rxjs/Observable';
 import {Response, Headers, URLSearchParams} from '@angular/http';
 import {Http} from '@angular/http';
+import {CartData} from '../classes/cart-data';
 
 @Injectable()
 export class CartService {
-  cartList: { l: any[], s: number };
+   cartList: CartData;
+  // cartList={};
   cartChange: Subject<any> = new Subject<any>();
   private localStorage: LocalStorage;
 
   constructor(private http: Http, private config: ConfigService) {
     this.localStorage = new LocalStorage('cart');
-    this.cartList = {l: [], s: 0};
+   // this.cartList = {l: [], s: 0};
+    // this.init();
+    this.get_cart_data();
   }
 
-  init() {
+/*  init() {
     this.get_cart_data();
     this.calculate_summ();
     this.put_cart_data();
-  }
+  }*/
 
   addNewItem(id: number, c: any, t: any, i: any) {
     // id- id товара в базе
@@ -96,13 +100,16 @@ export class CartService {
         this.cartList = {l: [], s: 0};
       }*/
     this.localStorage.getData('cart_list').then(resolve => {
-        this.cartList = <any> resolve;
+        this.cartList = <CartData> resolve;
+        console.log('get_cart_data this.cartList', this.cartList);
+        this.calculate_summ();
+        this.put_cart_data();
       },
       reject => {
       console.log('Случилось очень странное событие, и это надо отметить');
         this.cartList = {l: [], s: 0};
       });
-    console.log('get_cart_data this.cartList', this.cartList);
+
   }
 
   private put_cart_data() {
