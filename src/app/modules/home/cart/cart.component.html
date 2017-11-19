@@ -1,3 +1,55 @@
-<p>
-  cart works!
-</p>
+<div class="cart_component">
+  <div fxLayout="row nowrap" fxLayout.xs="column" *ngFor="let item of cartData.l; let i= index;">
+
+    <div fxFlex="auto" ><img src="{{item.i}}" class="cart_image"></div>
+    <div fxFlex="auto">{{item.t}} ({{item.c}} руб)</div>
+    <div fxFlex="auto">
+      <form class="form-inline">
+        <div class="form-group" style="margin-bottom: 0px;">
+          <div class="input-group" style=" margin-bottom: 0px;">
+            <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, -1)">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </div>
+            <input type="text"
+                   class="form-control wide_form"
+                   [value]="cartData.l[i].a"
+                   disabled
+                   style="text-align: center">
+
+            <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, 1)">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div fxFlex="auto">{{item.c* item.a}} руб</div>
+    <div fxFlex="auto">
+      <button type="button"
+              class="btn btn-light"
+              title="Удалить товар из корзины"
+              (click)="delete_item(item.id)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
+  <div fxLayout="row nowrap" fxLayout.xs="column" >
+    <div fxFlex="auto">
+      <h3>Итого:</h3>
+    </div>
+    <div fxFlex="auto">
+      <h3>{{cartData.s}} руб.</h3>
+    </div>
+    <div fxFlex="auto">
+      <button
+        type="button"
+        class="btn btn-primary btn-block"
+        (click)="create_order()"
+        [disabled]="cartData.s<=0">
+        Оформить заказ
+      </button>
+    </div>
+  </div>
+</div>
+

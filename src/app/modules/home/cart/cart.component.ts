@@ -5,15 +5,12 @@ import {Title} from '@angular/platform-browser';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.sass']
 })
 export class CartComponent implements OnInit {
   public cartData = {l: [], s: 0};
 
-  constructor(private cs: CartService, private titleService: Title,) {
-  }
-
-  ngOnInit() {
+  constructor(private cs: CartService, private titleService: Title) {
     this.cs.cartChange.subscribe((cartList) => {
       this.cartData = cartList;
       console.log('this.cartData', this.cartData);
@@ -21,7 +18,11 @@ export class CartComponent implements OnInit {
     });
   }
 
-/*
+  ngOnInit() {
+
+  }
+
+
 
   delete_item(id: number) {
     this.cs.removeFromCart(id);
@@ -35,6 +36,10 @@ export class CartComponent implements OnInit {
 
     this.cs.changeNumber(id, n);
   }
-*/
+
+  create_order(){
+
+  }
+
 
 }
