@@ -86,7 +86,7 @@ export class CartService {
         this.cartList.l.splice(index, 1);
       }
       this.cartList.s = this.calculate_summ();
-      // this.put_cart_data();
+      this.put_cart_data();
     }, reject => {
       console.log('Такого хранилища нет', reject);
       this.cartList = {l: [], s: 0};
@@ -108,7 +108,7 @@ export class CartService {
         }
       }
       this.cartList.s = this.calculate_summ();
-      // this.put_cart_data();
+       this.put_cart_data();
 
     }, reject => {
       console.log('Такого хранилища нет', reject);
