@@ -39,6 +39,9 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.sendDataInProgress = false;
     this.cartData = JSON.parse(JSON.stringify(this.cs.cartList));
+    if (this.cartData.s === 0) {// пустой список, редирект на главную
+      this.router.navigate(['/']);
+    }
   }
 
   submitForm() {

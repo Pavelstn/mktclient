@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../../services/order.service';
 import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -13,12 +13,15 @@ export class OrderComponent implements OnInit {
 
   constructor(public os: OrderService,
               private titleService: Title,
-              public router: Router
-              ) { }
+              public router: Router) {
+  }
 
   ngOnInit() {
-    this.titleService.setTitle( 'Подробности заказа' );
+    this.titleService.setTitle('Подробности заказа');
     this.cartData = this.os.cartData;
+    if (this.os.summ === '') {// пустой список, редирект на главную
+      this.router.navigate(['/']);
+    }
   }
 
 }
