@@ -4,10 +4,10 @@
     <div fxFlex="auto" ><img src="{{item.i}}" class="cart_image"></div>
    <!-- <div fxFlex="auto">{{item.t}} ({{item.c}} руб)</div>-->
     <div fxFlex="auto">
-      <div fxLayout="column" fxLayoutAlign="space-around" style="height: 100%;">
-        <div fxFlex="auto">{{item.t}} ({{item.c}} руб)</div>
-        <div fxFlex="auto">
-          <form class="form-inline">
+      <div fxLayout="column" fxLayoutAlign="center" style="height: 100%;">
+        <div fxFlex="10%">{{item.t}} ({{item.c}} руб)</div>
+       <div fxFlex="10%">
+          <!--<form class="form-inline">
             <div class="form-group" style="margin-bottom: 0px;">
               <div class="input-group" style=" margin-bottom: 0px;">
                 <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, -1)">
@@ -24,14 +24,39 @@
                 </div>
               </div>
             </div>
-          </form>
+          </form>-->
+         <div fxLayout="row">
+           <div fxFlex="10">
+             <button type="button"
+                     class="btn btn-light"
+                     (click)="incrementNumber(item.id, -1)">
+               <i class="fa fa-minus" aria-hidden="true"></i>
+             </button>
+           </div>
+           <div fxFlex="30">
+             <input type="text"
+                    class="form-control wide_form"
+                    [value]="cartData.l[i].a"
+                    disabled
+                    style="text-align: center">
+           </div>
+           <div fxFlex="10">
+             <button type="button"
+                     class="btn btn-light"
+                     (click)="incrementNumber(item.id, 1)">
+               <i class="fa fa-plus" aria-hidden="true"></i>
+             </button>
+           </div>
+           <div fxFlex="50">{{item.c* item.a}} руб</div>
+         </div>
         </div>
-        <div fxFlex="auto">{{item.c* item.a}} руб</div>
+        <!--<div fxFlex="10%">{{item.c* item.a}} руб</div>-->
       </div>
 
     </div>
     <!--<div fxFlex="auto">{{item.c* item.a}} руб</div>-->
-    <div fxFlex="auto">
+    <div fxFlex="10%" class="d-flex align-items-center">
+
       <button type="button"
               class="btn btn-light"
               title="Удалить товар из корзины"

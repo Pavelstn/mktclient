@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.cs.init();
   }
 
 
