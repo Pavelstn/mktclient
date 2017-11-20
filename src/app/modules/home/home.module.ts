@@ -18,7 +18,7 @@ import {CartWidgetComponent} from './cart-widget/cart-widget.component';
 import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {OrderComponent} from './order/order.component';
-
+import {ComponentsModule} from '../../components/components.module';
 
 @NgModule({
   imports: [
@@ -29,6 +29,7 @@ import {OrderComponent} from './order/order.component';
     RouterModule,
     HomeRoutingModule,
     NgxGalleryModule,
+    ComponentsModule,
   ],
   declarations: [
     IndexComponent,

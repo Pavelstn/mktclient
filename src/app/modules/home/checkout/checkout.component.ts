@@ -11,7 +11,7 @@ import {Response, Headers, URLSearchParams} from '@angular/http';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css']
+  styleUrls: ['./checkout.component.sass']
 })
 export class CheckoutComponent implements OnInit {
   public cartData = {l: [], s: 0};

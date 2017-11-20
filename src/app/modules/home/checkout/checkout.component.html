@@ -1,7 +1,7 @@
 <div class="checkout-component">
 
   <div class="deal_table">
-    <table class="table">
+    <!--<table class="table">
       <thead>
       <tr>
         <th scope="col">Наименование</th>
@@ -23,7 +23,8 @@
         <td><b>{{cartData.s}}</b></td>
       </tr>
 
-    </table>
+    </table>-->
+    <app-deal-table [data]='cartData'></app-deal-table>
   </div>
 
   <form [formGroup]="orderForm" novalidate (ngSubmit)="submitForm()">
