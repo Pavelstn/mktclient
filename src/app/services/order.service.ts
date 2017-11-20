@@ -7,17 +7,19 @@ import {Headers, Http} from '@angular/http';
 @Injectable()
 export class OrderService {
 
-  code: string;
-  comment: string;
-  customer_phone: string;
-  customer_name: string;
-  delivery_adress: string;
-  status: string;
-  summ: string;
-  list: any[];
+  code = '';
+  comment = '';
+  customer_phone = '';
+  customer_name = '';
+  delivery_adress = '';
+  status = '';
+  summ = '';
+  cartData;
 
 
-  constructor(private config: ConfigService, private http: Http) { }
+  constructor(private config: ConfigService, private http: Http) {
+    this.cartData = {l: [], s: 0};
+  }
 
 
   createOrder(params, headers) {

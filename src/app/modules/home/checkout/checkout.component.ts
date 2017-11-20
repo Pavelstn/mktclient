@@ -54,20 +54,24 @@ export class CheckoutComponent implements OnInit {
     params.append('cartlist', JSON.stringify(sendcartList));
 
     this.os.createOrder(params, headers).then(resolve => {
-      console.log('resolve', resolve);
+      const data = resolve.json();
+      // console.log('data', data);
       this.sendDataInProgress = false;
-      // this.router.navigate(['/home']);
+      //
 
-/*      this.os.code= data.code;
-      this.os.comment=data.comment;
-      this.os.customer_name=data.customer_name;
-      this.os.customer_phone=data.customer_phone;
-      this.os.delivery_adress=data.delivery_adress;
-      this.os.summ=data.summ;
-      this.os.status=data.status;
-      this.os.list=data.list;*/
+      this.os.code = data.code;
+      this.os.comment = this.orderForm.value.comment;
+      this.os.customer_name = this.orderForm.value.customer_name;
+      this.os.customer_phone = this.orderForm.value.customer_phone;
+      this.os.delivery_adress = this.orderForm.value.delivery_adress;
+      this.os.cartData = JSON.parse(JSON.stringify(this.cartData));
+      // this.os.summ = this.cartData.s.toString();
+      this.os.summ = data.summ;
+      this.os.status = data.status;
+      // this.os.list=data.list;
 
       this.cs.resetCart();
+      this.router.navigate(['/home/order']);
     }, reject => {
       alert('Возникла ошибка, попробуйте перезагрузить страницу и попробовать снова');
       this.sendDataInProgress = false;
