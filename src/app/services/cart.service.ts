@@ -165,7 +165,7 @@ export class CartService {
   resetCart() {
     this.cartList.l = [];
     this.localStorage.resetStorage();
-    this.calculate_summ();
+    this.cartList.s = this.calculate_summ();
     this.put_cart_data();
   }
 

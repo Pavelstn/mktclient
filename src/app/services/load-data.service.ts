@@ -33,10 +33,10 @@ export class LoadDataService {
       });
   }
 
-  createOrder(params, headers) {
+/*  createOrder(params, headers) {
     return this.http.post(this.config.dataServer + '/userapi/create_order', params.toString(), {headers: headers}).toPromise()
       .catch(this.errHandler);
-  }
+  }*/
 
 
   private errHandler(error: any): Promise<any> {

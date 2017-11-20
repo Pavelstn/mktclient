@@ -15,10 +15,13 @@ import { LoadDataService} from './services/load-data.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfigService } from './services/config.service';
 import { CartService } from './services/cart.service';
+import { OrderService } from './services/order.service';
+import { DealTableComponent } from './components/src/app/components/deal-table/deal-table.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DealTableComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { CartService } from './services/cart.service';
     HttpModule,
     JsonpModule
   ],
-  providers: [LocalStorage, LoadDataService, ConfigService, CartService],
+  providers: [LocalStorage, LoadDataService, ConfigService, CartService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
