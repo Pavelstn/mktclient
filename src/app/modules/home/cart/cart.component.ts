@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../../services/cart.service';
 import {Title} from '@angular/platform-browser';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +11,7 @@ import {Title} from '@angular/platform-browser';
 export class CartComponent implements OnInit {
   public cartData = {l: [], s: 0};
 
-  constructor(private cs: CartService, private titleService: Title) {
+  constructor(private cs: CartService, private titleService: Title, public router: Router) {
     this.cs.cartChange.subscribe((cartList) => {
       this.cartData = cartList;
       console.log('this.cartData', this.cartData);
@@ -21,7 +22,6 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.cs.init();
   }
-
 
 
   delete_item(id: number) {
@@ -37,8 +37,8 @@ export class CartComponent implements OnInit {
     this.cs.changeNumber(id, n);
   }
 
-  create_order(){
-
+  create_order() {
+    this.router.navigateByUrl('/home/checkout');
   }
 
 
