@@ -41,7 +41,7 @@ export class LoadDataService {
 
 
   private emitUpdateData(data) {
-    console.log('data', data);
+   // console.log('data', data);
 
     this.categories = data.categories;
     this.deals_list = data.deals_list;

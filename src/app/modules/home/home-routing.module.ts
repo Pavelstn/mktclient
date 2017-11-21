@@ -7,6 +7,7 @@ import {HomeComponent} from './home.component';
 import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {OrderComponent} from './order/order.component';
+import {CategoryComponent} from './category/category.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -27,6 +28,9 @@ const routes: Routes = [{
     }, {
       path: 'order',
       component: OrderComponent,
+    }, {
+      path: 'category/:id',
+      component: CategoryComponent,
     }
   ]
 

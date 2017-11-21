@@ -19,6 +19,7 @@ import {CartComponent} from './cart/cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {OrderComponent} from './order/order.component';
 import {ComponentsModule} from '../../components/components.module';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import {ComponentsModule} from '../../components/components.module';
     CartWidgetComponent,
     CartComponent,
     CheckoutComponent,
-    OrderComponent
+    OrderComponent,
+    CategoryComponent
   ]
 })
 export class HomeModule {

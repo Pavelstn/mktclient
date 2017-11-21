@@ -17,21 +17,6 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.allSite = this.route.snapshot.data['mainPage'];
-    // this.ls.getMainPage();
-    // console.log('ddddddddddd');
-    /*this.ls.getMainPage().subscribe((data) => {
-      console.log('data', data);
-
-    });*/
-    /*console.log('this.allSite', this.allSite);
-    console.log('his.allSite.deals_list.length', this.allSite.deals_list.length);
-    for (let i = 0; i < this.allSite.deals_list.length; i++) {
-      if (this.allSite.deals_list[i].on_top === true) {
-        this.mainpage.push(this.allSite.deals_list[i]);
-      }
-    }
-    */
     this.ls.getMainPage();
     this.titleService.setTitle('Главная');
     this.updateMainPageData();

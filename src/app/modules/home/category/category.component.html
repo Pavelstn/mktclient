@@ -1,0 +1,7 @@
+<div class="mkt-container home_layout">
+  <div fxLayout="row wrap" fxLayout.xs="column">
+    <div fxFlex="33.33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let item of dealList">
+      <app-small-card [data]="item" ></app-small-card>
+    </div>
+  </div>
+</div>
