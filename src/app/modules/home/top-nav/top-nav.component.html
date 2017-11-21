@@ -1,19 +1,4 @@
-<!--<div class="topnav" fxLayout="column" fxLayoutAlign="center">
-  <div fxFlex="16px">
-    <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
-      <div fxFlex="auto" class="nav_left_item"><a routerLink="/">Главная</a> </div>
-      <div fxFlex="auto">Магазин</div>
-      <div fxFlex="auto">Доставка и оплата</div>
-      <div fxFlex="auto">О нас</div>
-      <div fxFlex="auto">Контакты</div>
-      <div fxFlex="auto" class="nav_right_item">
-        <app-cart-widget></app-cart-widget>
-      </div>
-    </div>
-  </div>
-</div>-->
-
-<div class="topnav" fxLayout="column" fxLayoutAlign="center">
+<div class="topnav" fxLayout="column" fxLayoutAlign="center" fxHide.xs="true">
   <div fxFlex="16px">
     <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
       <div fxFlex="auto" class="nav_left_item"><a routerLink="/">Главная</a></div>
@@ -27,3 +12,36 @@
     </div>
   </div>
 </div>
+
+<div class="topnav"
+     fxLayout="column"
+     fxLayoutAlign="center"
+     fxHide.xl="true"
+     fxHide.lg="true"
+     fxHide.md="true"
+     fxHide.sm="true">
+  <div fxFlex="16px">
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
+      <div fxFlex="auto" class="nav_left_item">
+        <div class="dropdown show" style="margin-top: -8px;">
+          <a class="btn btn-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-hasp
+             opup="true" aria-expanded="false">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a routerLink="/" class="dropdown-item">Главная</a>
+            <a *ngFor="let item of categories" routerLink="/home/category/{{item.id}}" class="dropdown-item">{{item.name}}</a>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="auto"></div>
+      <div fxFlex="auto" class="nav_right_item">
+        <app-cart-widget></app-cart-widget>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
