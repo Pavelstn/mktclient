@@ -16,6 +16,7 @@ export class PageComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[];
   // galleryImages: NgxGalleryImage[];
   galleryImages = [];
+  pageUnlock = false;
 
   constructor(private cs: CartService,
               private route: ActivatedRoute,
@@ -24,9 +25,25 @@ export class PageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pages = this.route.snapshot.data['page'];
-    this.page = this.pages.pages[0];
-    console.log('this.page', this.page);
+    this.route.params.subscribe(params => {
+      this.pageUnlock = false;
+      this.ls.getPage(params['id']);
+      this.ls.pagesChange.subscribe((data) => {
+        for (const page of this.ls.pages) {
+          this.page = page;
+          this.titleService.setTitle(this.page.title);
+          this.preparePage();
+        }
+      });
+    });
+  }
+
+  add_to_cart(id: number, c: any, t: any, i: any) {
+    console.log('click');
+    this.cs.addNewItem(id, c, t, i);
+  }
+
+  private preparePage() {
     for (let i = 0; i < this.page.images_list.length; i++) {
       const item = this.page.images_list[i];
       this.galleryImages.push({small: item.thumb, medium: item.medium, big: item.original});
@@ -55,13 +72,7 @@ export class PageComponent implements OnInit {
         preview: false
       }
     ];
-
-    this.titleService.setTitle(this.page.title);
-  }
-
-  add_to_cart(id: number, c: any, t: any, i: any) {
-    console.log('click');
-    this.cs.addNewItem(id, c, t, i);
+    this.pageUnlock = true;
   }
 
 }

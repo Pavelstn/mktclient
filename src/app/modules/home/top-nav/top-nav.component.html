@@ -1,12 +1,5 @@
-<div class="topnav" fxLayout="column" fxLayoutAlign="center">
+<!--<div class="topnav" fxLayout="column" fxLayoutAlign="center">
   <div fxFlex="16px">
-    <!--<div class="mkt-container" fxLayout="row nowrap">
-      <div fxFlex="20%" class="nav_left_item">Главная</div>
-      <div fxFlex="20%" class="nav_item">Магазин</div>
-      <div fxFlex="20%" class="nav_item">Доставка и оплата</div>
-      <div fxFlex="20%" class="nav_item">О нас</div>
-      <div fxFlex="20%" class="nav_right_item">Контакты</div>
-    </div>-->
     <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
       <div fxFlex="auto" class="nav_left_item"><a routerLink="/">Главная</a> </div>
       <div fxFlex="auto">Магазин</div>
@@ -18,5 +11,19 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
+<div class="topnav" fxLayout="column" fxLayoutAlign="center">
+  <div fxFlex="16px">
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
+      <div fxFlex="auto" class="nav_left_item"><a routerLink="/">Главная</a></div>
+      <div fxFlex="auto" *ngFor="let item of categories">
+        <a routerLink="/home/category/{{item.id}}">{{item.name}}</a>
+      </div>
+
+      <div fxFlex="auto" class="nav_right_item">
+        <app-cart-widget></app-cart-widget>
+      </div>
+    </div>
+  </div>
+</div>

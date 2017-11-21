@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {MainPageResolver, PageResolver} from '../../resolvers/page.resolvers';
+// import {MainPageResolver, PageResolver} from '../../resolvers/page.resolvers';
 import {IndexComponent} from './index/index.component';
 import {PageComponent} from './page/page.component';
 import {HomeComponent} from './home.component';
 import {CartComponent} from './cart/cart.component';
-import { CheckoutComponent } from './checkout/checkout.component';
-import { OrderComponent } from './order/order.component';
+import {CheckoutComponent} from './checkout/checkout.component';
+import {OrderComponent} from './order/order.component';
 
 const routes: Routes = [{
   path: 'home',
@@ -15,15 +15,9 @@ const routes: Routes = [{
     {
       path: '',
       component: IndexComponent,
-      resolve: {
-        mainPage: MainPageResolver
-      }
     }, {
       path: 'page/:id',
       component: PageComponent,
-      resolve: {
-        page: PageResolver
-      }
     }, {
       path: 'cart',
       component: CartComponent,
@@ -48,7 +42,7 @@ const routes: Routes = [{
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [MainPageResolver, PageResolver]
+  providers: []
 })
 export class HomeRoutingModule {
 }

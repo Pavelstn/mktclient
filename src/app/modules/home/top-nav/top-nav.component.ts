@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LoadDataService} from '../../../services/load-data.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-nav.component.sass']
 })
 export class TopNavComponent implements OnInit {
+  categories = [];
 
-  constructor() { }
+  constructor(public ls: LoadDataService) {
+  }
 
   ngOnInit() {
+    this.categories = this.ls.categories;
+    this.ls.categoriesChange.subscribe((categories) => {
+      this.categories = this.ls.categories;
+    });
   }
 
 }
