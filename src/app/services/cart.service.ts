@@ -1,5 +1,5 @@
 import {Injectable, EventEmitter} from '@angular/core';
-import {LocalStorage} from './../services/local-storage.service';
+import {MyLocalStorageService} from './my-local-storage.service';
 // import {Subject} from 'rxjs';
 import {Jsonp} from '@angular/http';
 import {ConfigService} from '../services/config.service';
@@ -12,10 +12,10 @@ import {CartData} from '../classes/cart-data';
 export class CartService {
   cartList = {l: [], s: 0};
   cartChange: any;
-  private localStorage: LocalStorage;
+  private myLocalStorage: MyLocalStorageService;
 
   constructor(private http: Http, private config: ConfigService) {
-    this.localStorage = new LocalStorage('cart');
+    this.myLocalStorage = new MyLocalStorageService('cart');
     this.cartChange = new EventEmitter();
    // this.init();
     this.get_cart_data();
@@ -50,7 +50,7 @@ export class CartService {
   }
 
   private get_cart_data() {
-    this.localStorage.getData('cart_list').then(resolve => {
+    this.myLocalStorage.getData('cart_list').then(resolve => {
       this.cartList = <any>resolve;
       this.cartList.s = this.calculate_summ();
       this.put_cart_data();
@@ -62,7 +62,7 @@ export class CartService {
 
 
   private put_cart_data() {
-    this.localStorage.setData('cart_list', this.cartList).then(resolve => {
+    this.myLocalStorage.setData('cart_list', this.cartList).then(resolve => {
       this.cartChange.emit(this.cartList);
     }, reject => {
       console.log('Неудачное сохранение корзины', reject);
@@ -79,7 +79,7 @@ export class CartService {
   }
 
   removeFromCart(id: number) {
-    this.localStorage.getData('cart_list').then(resolve => {
+    this.myLocalStorage.getData('cart_list').then(resolve => {
       this.cartList = <any>resolve;
       let index = this.check_exist(id);
       if (index != null) {
@@ -95,7 +95,7 @@ export class CartService {
 
 
   incrementNumber(id: number, n: number) {
-    this.localStorage.getData('cart_list').then(resolve => {
+    this.myLocalStorage.getData('cart_list').then(resolve => {
       this.cartList = <any>resolve;
       let index = this.check_exist(id);
       if (index != null) {
@@ -117,7 +117,7 @@ export class CartService {
   }
 
   changeNumber(id: number, n: number) {
-    this.localStorage.getData('cart_list').then(resolve => {
+    this.myLocalStorage.getData('cart_list').then(resolve => {
       this.cartList = <any>resolve;
       let index = this.check_exist(id);
       if (n < 1) {
@@ -164,7 +164,7 @@ export class CartService {
 
   resetCart() {
     this.cartList.l = [];
-    this.localStorage.resetStorage();
+    this.myLocalStorage.resetStorage();
     this.cartList.s = this.calculate_summ();
     this.put_cart_data();
   }

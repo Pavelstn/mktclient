@@ -10,7 +10,7 @@ import { HomeModule } from './modules/home/home.module';
 
 
 
-import { LocalStorage} from './services/local-storage.service';
+// import { MyLocalStorageService} from './services/my-local-storage.service';
 import { LoadDataService} from './services/load-data.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfigService } from './services/config.service';
@@ -32,7 +32,7 @@ import { OrderService } from './services/order.service';
     HttpModule,
     JsonpModule
   ],
-  providers: [LocalStorage, LoadDataService, ConfigService, CartService, OrderService],
+  providers: [ LoadDataService, ConfigService, CartService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

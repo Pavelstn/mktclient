@@ -1,8 +1,10 @@
 import {Injectable} from '@angular/core';
 
+declare const window;
+declare const localStorage;
 
 @Injectable()
-export class LocalStorage {
+export class MyLocalStorageService {
   name: string;
 
   constructor(name: string) {
@@ -46,7 +48,7 @@ export class LocalStorage {
           this.resetStorage();
         }
       } else { // если никаких дынных нет, мы их сначала создаем, а потом используем
-        let data = {resetFlag: false, list: JSON.stringify({})};
+        const data = {resetFlag: false, list: JSON.stringify({})};
         localStorage.setItem(this.name, JSON.stringify(data));
       }
 

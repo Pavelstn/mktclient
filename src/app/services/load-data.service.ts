@@ -2,8 +2,8 @@ import {Injectable, EventEmitter} from '@angular/core';
 import {Jsonp, Response} from '@angular/http';
 import {ConfigService} from '../services/config.service';
 import {Headers, Http} from '@angular/http';
-import 'rxjs/add/operator/map';
-import {Observable} from 'rxjs/Rx';
+// import 'rxjs/add/operator/map';
+// import {Observable} from 'rxjs/Rx';
 
 
 @Injectable()
@@ -34,7 +34,8 @@ export class LoadDataService {
   }
 
   getPage(deal_id) {
-    this.jsonp.get(`${this.config.dataServer}/api/page/${this.config.shop_id.toString()}/${deal_id}?callback=JSONP_CALLBACK`).subscribe((data) => {
+    this.jsonp.get(`${this.config.dataServer}/api/page/${this.config.shop_id.toString()}/${deal_id}?callback=JSONP_CALLBACK`)
+      .subscribe((data) => {
       this.emitUpdateData(data.json());
     });
   }

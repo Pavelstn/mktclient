@@ -8,7 +8,7 @@ import {CartService} from '../../../services/cart.service';
 })
 export class SmallCardComponent implements OnInit {
 
-  @Input() data = {};
+  @Input() data;
 
   constructor(private cs: CartService) {
   }
