@@ -3,6 +3,7 @@ import {ActivatedRoute, Route} from '@angular/router';
 import {LoadDataService} from '../../../services/load-data.service';
 import {CartService} from '../../../services/cart.service';
 import {NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation} from 'ngx-gallery';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-page',
@@ -16,7 +17,10 @@ export class PageComponent implements OnInit {
   // galleryImages: NgxGalleryImage[];
   galleryImages = [];
 
-  constructor(private cs: CartService, private route: ActivatedRoute, private ls: LoadDataService) {
+  constructor(private cs: CartService,
+              private route: ActivatedRoute,
+              private ls: LoadDataService,
+              private titleService: Title) {
   }
 
   ngOnInit() {
@@ -52,7 +56,7 @@ export class PageComponent implements OnInit {
       }
     ];
 
-
+    this.titleService.setTitle(this.page.title);
   }
 
   add_to_cart(id: number, c: any, t: any, i: any) {
