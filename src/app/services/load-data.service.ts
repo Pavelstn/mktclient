@@ -1,6 +1,7 @@
 import {Injectable, EventEmitter} from '@angular/core';
 import {Jsonp, Response} from '@angular/http';
 import {ConfigService} from '../services/config.service';
+import {SplashScreenService} from '../services/splash-screen.service';
 import {Headers, Http} from '@angular/http';
 // import 'rxjs/add/operator/map';
 // import {Observable} from 'rxjs/Rx';
@@ -18,7 +19,8 @@ export class LoadDataService {
   pages = [];
   pagesChange;
 
-  constructor(private jsonp: Jsonp, private config: ConfigService, private http: Http) {
+
+  constructor(private jsonp: Jsonp, private config: ConfigService, private http: Http, private ss: SplashScreenService) {
 
     this.categoriesChange = new EventEmitter();
     this.deals_listChange = new EventEmitter();
@@ -28,12 +30,14 @@ export class LoadDataService {
   }
 
   getMainPage() {
+    this.ss.show();
     this.jsonp.get(this.url).subscribe((data) => {
       this.emitUpdateData(data.json());
     });
   }
 
   getPage(deal_id) {
+    this.ss.show();
     this.jsonp.get(`${this.config.dataServer}/api/page/${this.config.shop_id.toString()}/${deal_id}?callback=JSONP_CALLBACK`)
       .subscribe((data) => {
       this.emitUpdateData(data.json());
@@ -51,6 +55,7 @@ export class LoadDataService {
     this.categoriesChange.emit(this.categories);
     this.deals_listChange.emit(this.deals_list);
     this.pagesChange.emit(this.pages);
+    this.ss.hide();
   }
 
 

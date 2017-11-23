@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DealTableComponent } from './deal-table/deal-table.component';
+import { SpashScreenComponent } from './spash-screen/spash-screen.component';
 
 @NgModule({
   imports: [
@@ -8,7 +9,8 @@ import { DealTableComponent } from './deal-table/deal-table.component';
   ],
   exports: [
     DealTableComponent,
+    SpashScreenComponent,
   ],
-  declarations: [DealTableComponent]
+  declarations: [DealTableComponent, SpashScreenComponent, SpashScreenComponent]
 })
 export class ComponentsModule { }

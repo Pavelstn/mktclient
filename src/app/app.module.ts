@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ConfigService } from './services/config.service';
 import { CartService } from './services/cart.service';
 import { OrderService } from './services/order.service';
+import { SplashScreenService } from './services/splash-screen.service';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { OrderService } from './services/order.service';
     HttpModule,
     JsonpModule
   ],
-  providers: [ LoadDataService, ConfigService, CartService, OrderService],
+  providers: [ LoadDataService, ConfigService, CartService, OrderService, SplashScreenService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
