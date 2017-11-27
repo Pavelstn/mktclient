@@ -7,11 +7,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/home'
+    redirectTo: '/landing'
   },
   {
     path: '**',
-    redirectTo: '/home'
+    redirectTo: '/landing'
   }
 ];
 

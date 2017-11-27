@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './modules/home/home.module';
+import { LandingModule } from './modules/landing/landing.module';
 
 
 
@@ -28,6 +29,7 @@ import { SplashScreenService } from './services/splash-screen.service';
     BrowserModule,
     FlexLayoutModule,
     HomeModule,
+    LandingModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpModule,
