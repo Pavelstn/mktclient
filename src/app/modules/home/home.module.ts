@@ -13,9 +13,7 @@ import {IndexComponent} from './index/index.component';
 import {PageComponent} from './page/page.component';
 import {HomeComponent} from './home.component';
 import {NgxGalleryModule} from 'ngx-gallery';
-import {CartComponent} from './cart/cart.component';
-import {CheckoutComponent} from './checkout/checkout.component';
-import {OrderComponent} from './order/order.component';
+
 import {ComponentsModule} from '../../components/components.module';
 import { CategoryComponent } from './category/category.component';
 
@@ -34,9 +32,7 @@ import { CategoryComponent } from './category/category.component';
     IndexComponent,
     PageComponent,
     HomeComponent,
-    CartComponent,
-    CheckoutComponent,
-    OrderComponent,
+
     CategoryComponent
   ]
 })

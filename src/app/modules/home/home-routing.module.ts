@@ -4,9 +4,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {IndexComponent} from './index/index.component';
 import {PageComponent} from './page/page.component';
 import {HomeComponent} from './home.component';
-import {CartComponent} from './cart/cart.component';
-import {CheckoutComponent} from './checkout/checkout.component';
-import {OrderComponent} from './order/order.component';
+
+
 import {CategoryComponent} from './category/category.component';
 
 const routes: Routes = [{
@@ -19,16 +18,7 @@ const routes: Routes = [{
     }, {
       path: 'page/:id',
       component: PageComponent,
-    }, {
-      path: 'cart',
-      component: CartComponent,
-    }, {
-      path: 'checkout',
-      component: CheckoutComponent,
-    }, {
-      path: 'order',
-      component: OrderComponent,
-    }, {
+    },   {
       path: 'category/:id',
       component: CategoryComponent,
     }
