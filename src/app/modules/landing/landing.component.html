@@ -1,3 +1,18 @@
-<p>
-  landing works!
-</p>
+<!--<app-spash-screen></app-spash-screen>-->
+
+
+<app-top-nav></app-top-nav>
+<div style="margin-top: 40px;">
+  <app-big-gallery></app-big-gallery>
+</div>
+
+
+
+
+<div class="mkt-container">
+  <div fxLayout="row wrap" fxLayout.xs="column">
+    <div fxFlex="33.33%" fxFlex.xs="100%" fxFlex.sm="50%" *ngFor="let item of mainpage">
+      <app-small-card [data]="item" ></app-small-card>
+    </div>
+  </div>
+</div>

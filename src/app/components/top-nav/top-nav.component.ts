@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {LoadDataService} from '../../../services/load-data.service';
+import {LoadDataService} from '../../services/load-data.service';
 
 @Component({
   selector: 'app-top-nav',
