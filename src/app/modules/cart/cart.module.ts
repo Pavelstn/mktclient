@@ -9,6 +9,7 @@ import {CartRoutingModule} from './cart-routing.module';
 import {CartComponent} from './cart.component';
 import {CheckoutComponent} from './checkout/checkout.component';
 import {OrderComponent} from './order/order.component';
+import { CartListComponent } from './cart-list/cart-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,13 +18,14 @@ import {OrderComponent} from './order/order.component';
     FlexLayoutModule,
     RouterModule,
     ComponentsModule,
-    
+
     CartRoutingModule,
   ],
   declarations: [
     CartComponent,
     CheckoutComponent,
     OrderComponent,
+    CartListComponent,
   ]
 })
 export class CartModule { }

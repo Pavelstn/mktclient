@@ -14,8 +14,9 @@ import {CartWidgetComponent} from './cart-widget/cart-widget.component';
 @NgModule({
   imports: [
     CommonModule,
-    NgxGalleryModule,
     RouterModule,
+    NgxGalleryModule,
+
     FlexLayoutModule,
   ],
   exports: [

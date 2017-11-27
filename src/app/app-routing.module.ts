@@ -8,10 +8,6 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: '/landing'
-  },
-  {
-    path: '**',
-    redirectTo: '/landing'
   }
 ];
 

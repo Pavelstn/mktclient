@@ -74,7 +74,7 @@ export class CheckoutComponent implements OnInit {
       // this.os.list=data.list;
 
       this.cs.resetCart();
-      this.router.navigate(['/home/order']);
+      this.router.navigate(['/cart/order']);
     }, reject => {
       alert('Возникла ошибка, попробуйте перезагрузить страницу и попробовать снова');
       this.sendDataInProgress = false;

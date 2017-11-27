@@ -6,7 +6,6 @@ import {LandingComponent} from './landing.component';
 const routes: Routes = [{
   path: 'landing',
   component: LandingComponent,
-  children: []
 }];
 
 @NgModule({
