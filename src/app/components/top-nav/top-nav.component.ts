@@ -10,7 +10,7 @@ import {Router, NavigationEnd} from '@angular/router';
 export class TopNavComponent implements OnInit {
   categories = [];
 
-  constructor(public ls: LoadDataService) {
+  constructor(public ls: LoadDataService, public router: Router) {
   }
 
   ngOnInit() {

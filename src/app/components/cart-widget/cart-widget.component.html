@@ -1,7 +1,9 @@
 <a
-  class="cartbutton"
+  class="cartbutton top-nav-link"
   routerLink="/cart"
-  title="Корзина">
+  title="Корзина"
+  [routerLinkActive]="['link-active']"
+  [routerLinkActiveOptions]="{exact:true}">
         <span class="">
 
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
