@@ -1,6 +1,6 @@
 <div class="top-nav-component">
   <!--Для декстопа-->
-  <div class="topnav" fxLayout="column" fxLayoutAlign="center" fxHide.xs="true">
+  <div class="topnav-full" fxLayout="column" fxLayoutAlign="center" fxHide.xs="true">
     <div fxFlex="16px">
       <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
         <div fxFlex="auto" class="nav_left_item">
@@ -27,51 +27,70 @@
 
 
   <!--Мобильная версия-->
-  <div class="topnav"
+
+  <div class="top-nav-mobile"
        fxLayout="column"
-       fxLayoutAlign="center"
+       fxLayoutAlign="top"
        fxHide.xl="true"
        fxHide.lg="true"
        fxHide.md="true"
        fxHide.sm="true">
-    <div fxFlex="16px">
-      <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
-        <div fxFlex="auto" class="nav_left_item">
-          <div class="dropdown show" style="margin-top: -8px;">
-            <a class="btn btn-link top-nav-link"
-               href="#" role="button"
-               id="dropdownMenuLink"
-               data-toggle="dropdown"
-               aria-haspopup="true"
-               aria-expanded="false"
-            >
-              <i class="fa fa-bars" aria-hidden="true"></i>
-            </a>
+    <div fxFlex="50px">
+      <div class="top-nav-mobile-bar"
+           fxLayout="column"
+           fxLayoutAlign="center"
+      >
+        <div fxFlex="16px">
+          <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
+            <div fxFlex="auto" class="nav_left_item">
+              <div class="dropdown show" style="margin-top: -8px;">
+                <button class="btn btn-link btn-top-menu"
+                        role="button"
+                >
+                  <i class="fa fa-bars" aria-hidden="true" *ngIf="!mobileModeMenuShow" (click)="clickButton()"></i>
+                  <i class="fa fa-times" aria-hidden="true" *ngIf="mobileModeMenuShow" (click)="clickButton()"></i>
+                </button>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a routerLink="/"
-                 class="dropdown-item"
-                 [ngClass]="{'link-active':router.isActive('/landing')}"
-              >
-                Главная
-              </a>
-              <a *ngFor="let item of categories"
-                 routerLink="/home/category/{{item.id}}"
-                 class="dropdown-item"
-                 [routerLinkActive]="['link-active']"
-                 [routerLinkActiveOptions]="{exact:true}">
-                {{item.name}}
-              </a>
+              </div>
+            </div>
+            <div fxFlex="auto"></div>
+            <div fxFlex="auto" class="nav_right_item">
+              <app-cart-widget></app-cart-widget>
             </div>
           </div>
         </div>
-        <div fxFlex="auto"></div>
-        <div fxFlex="auto" class="nav_right_item">
-          <app-cart-widget></app-cart-widget>
-        </div>
       </div>
     </div>
+    <div fxFlex="auto" class="top-nav-mobile-menu" *ngIf="mobileModeMenuShow" [ngClass]="{'top-nav-mobile-menu-show': showAnimate, 'top-nav-mobile-menu-hide': hideAnimate }">
+      <div fxLayout="column"
+           fxLayoutAlign="center">
+
+        <div fxFlex="50px" fxLayoutAlign="center">
+          <a class="top-nav-link"
+             routerLink="/"
+             [ngClass]="{'link-active':router.isActive('/landing')}"
+          >Главная</a>
+        </div>
+        <div fxFlex="50px" fxLayoutAlign="center" *ngFor="let item of categories">
+
+          <a class="top-nav-link"
+             routerLink="/home/category/{{item.id}}"
+             [routerLinkActive]="['link-active']"
+             [routerLinkActiveOptions]="{exact:true}"
+             (click)="clickButton()">
+
+            {{item.name}}
+          </a>
+
+
+        </div>
+
+
+      </div>
+    </div>
+
   </div>
+
 
 </div>
 
