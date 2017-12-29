@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LoadDataService} from '../../services/load-data.service';
 import {Router, NavigationEnd} from '@angular/router';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-top-nav',
@@ -28,14 +30,26 @@ export class TopNavComponent implements OnInit {
       this.mobileModeMenuShow = true;
       this.hideAnimate = false;
       this.showAnimate = true;
+      $('html,body').css('overflow', 'hidden');
 
     } else {
-      this.hideAnimate = true;
-      this.showAnimate = false;
-      setTimeout(() => {
-        this.mobileModeMenuShow = false;
-      }, 600);
+      this.hideMenu();
     }
+  }
+
+  public clickLink(url) {
+    console.log('url', url);
+    this.router.navigateByUrl(url);
+    this.hideMenu();
+  }
+
+  private hideMenu() {
+    this.hideAnimate = true;
+    this.showAnimate = false;
+    setTimeout(() => {
+      this.mobileModeMenuShow = false;
+      $('html,body').css('overflow', 'auto');
+    }, 600);
   }
 
 }
