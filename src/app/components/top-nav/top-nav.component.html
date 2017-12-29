@@ -27,102 +27,61 @@
 
 
   <!--Мобильная версия-->
-
-  <!--<div class="top-nav-mobile"
+  <div class="top-nav-mobile-bar"
        fxLayout="column"
-       fxLayoutAlign="top"
+       fxLayoutAlign="center"
        fxHide.xl="true"
        fxHide.lg="true"
        fxHide.md="true"
-       fxHide.sm="true">-->
-  <!--  <div fxFlex="50px">-->
-      <div class="top-nav-mobile-bar"
-           fxLayout="column"
-           fxLayoutAlign="center"
-      >
-        <div fxFlex="16px">
-          <div fxLayout="row nowrap" fxLayoutAlign="space-between" class="mkt-container">
-            <div fxFlex="auto" class="nav_left_item">
-              <div class="dropdown show" style="margin-top: -8px;">
-                <button class="btn btn-link btn-top-menu"
-                        role="button"
-                >
-                  <i class="fa fa-bars" aria-hidden="true" *ngIf="!mobileModeMenuShow" (click)="clickButton()"></i>
-                  <i class="fa fa-times" aria-hidden="true" *ngIf="mobileModeMenuShow" (click)="clickButton()"></i>
-                </button>
+       fxHide.sm="true"
+  >
+    <div fxFlex="16px">
+      <div fxLayout="row nowrap"
+           fxLayoutAlign="space-between"
+           class="mkt-container">
+        <div fxFlex="auto"
+             class="nav_left_item">
+          <div class="dropdown show"
+               style="margin-top: -8px;">
+            <button class="btn btn-link btn-top-menu"
+                    role="button"
+            >
+              <i class="fa fa-bars" aria-hidden="true" *ngIf="!mobileModeMenuShow" (click)="clickButton()"></i>
+              <i class="fa fa-times" aria-hidden="true" *ngIf="mobileModeMenuShow" (click)="clickButton()"></i>
+            </button>
 
-              </div>
-            </div>
-            <div fxFlex="auto"></div>
-            <div fxFlex="auto" class="nav_right_item">
-              <app-cart-widget></app-cart-widget>
-            </div>
           </div>
         </div>
-      </div>
-  <!--  </div>-->
-<!--    <div fxFlex="auto" class="top-nav-mobile-menu" *ngIf="mobileModeMenuShow" [ngClass]="{'top-nav-mobile-menu-show': showAnimate, 'top-nav-mobile-menu-hide': hideAnimate }">
-      <div fxLayout="column"
-           fxLayoutAlign="center">
-
-        <div fxFlex="50px" fxLayoutAlign="center">
-          <a class="top-nav-link"
-             routerLink="/"
-             [ngClass]="{'link-active':router.isActive('/landing')}"
-          >Главная</a>
+        <div fxFlex="auto"></div>
+        <div fxFlex="auto" class="nav_right_item">
+          <app-cart-widget></app-cart-widget>
         </div>
-        <div fxFlex="50px" fxLayoutAlign="center" *ngFor="let item of categories">
-
-          <a class="top-nav-link"
-             routerLink="/home/category/{{item.id}}"
-             [routerLinkActive]="['link-active']"
-             [routerLinkActiveOptions]="{exact:true}"
-             (click)="clickButton()">
-
-            {{item.name}}
-          </a>
-
-
-        </div>
-
-
       </div>
-    </div>-->
+    </div>
+  </div>
 
-
-
- <!-- </div>-->
-
-
-  <div fxLayout="column" class="top-nav-mobile-menu" *ngIf="mobileModeMenuShow" [ngClass]="{'top-nav-mobile-menu-show': showAnimate, 'top-nav-mobile-menu-hide': hideAnimate }"
+  <div fxLayout="column"
+       class="top-nav-mobile-menu"
+       *ngIf="mobileModeMenuShow"
+       [ngClass]="{'top-nav-mobile-menu-show': showAnimate, 'top-nav-mobile-menu-hide': hideAnimate }"
        fxLayoutAlign="center">
-
-    <div fxFlex="50px" fxLayoutAlign="center">
+    <div fxFlex="50px"
+         fxLayoutAlign="center">
       <p class="top-nav-link"
-
          (click)="clickLink('/')"
          [ngClass]="{'link-active':router.isActive('/landing')}"
       >Главная</p>
     </div>
-    <div fxFlex="50px" fxLayoutAlign="center" *ngFor="let item of categories">
-
+    <div fxFlex="50px"
+         fxLayoutAlign="center"
+         *ngFor="let item of categories">
       <p class="top-nav-link"
-
-
-
          [ngClass]="{'link-active': router.url=== '/home/category/'+item.id}"
          (click)="clickLink('/home/category/'+item.id)">
-
         {{item.name}}
       </p>
-
-
     </div>
-
-
   </div>
-
-
 </div>
 
 
