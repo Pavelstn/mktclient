@@ -10,7 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ['./top-nav.component.sass']
 })
 export class TopNavComponent implements OnInit {
-  categories = [];
+  public categories = [];
   public mobileModeMenuShow = false;
   public showAnimate = false;
   public hideAnimate = false;

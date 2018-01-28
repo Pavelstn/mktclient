@@ -1,10 +1,10 @@
-import { MktclientPage } from './app.po';
+import { AppPage } from './app.po';
 
 describe('mktclient App', () => {
-  let page: MktclientPage;
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new MktclientPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {
