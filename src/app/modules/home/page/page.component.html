@@ -1,10 +1,21 @@
-<div *ngIf="pageUnlock">
+<div *ngIf="pageUnlock" class="page-component">
   <div fxLayout="row" fxLayout.xs="column">
+
+    <div fxFlex="100%"
+         fxflex.xs="100%"
+         fxHide.xl="true"
+         fxHide.lg="true"
+         fxHide.md="true"
+         fxHide.sm="true"
+         class="mobile-title">
+      <h1>{{page.title}}</h1>
+    </div>
+
     <div fxFlex="50%" fxflex.xs="100%">
       <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
     </div>
-    <div fxFlex="50%" fxflex.xs="100%">
-      <h1>{{page.title}}</h1>
+    <div fxFlex="50%" fxflex.xs="100%" class="content-place">
+      <h1 fxHide.xs="true">{{page.title}}</h1>
       <p [innerHTML]="page.description"></p>
       <span itemprop="name" class="item_title">
       <h1>{{page.title}}</h1>

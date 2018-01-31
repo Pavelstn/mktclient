@@ -8,7 +8,7 @@ import {Title} from '@angular/platform-browser';
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
-  styleUrls: ['./page.component.css']
+  styleUrls: ['./page.component.sass']
 })
 export class PageComponent implements OnInit {
   pages;
@@ -39,7 +39,7 @@ export class PageComponent implements OnInit {
   }
 
   add_to_cart(id: number, c: any, t: any, i: any) {
-    console.log('click');
+    // console.log('click');
     this.cs.addNewItem(id, c, t, i);
   }
 
