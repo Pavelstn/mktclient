@@ -1,17 +1,18 @@
-<h3>Заказ № {{os.code}}</h3>
-<app-deal-table [data]='cartData'></app-deal-table>
-<div>
-  <!--<h3>Итого {{os.summ}} руб</h3><br>-->
-  <b>Получатель </b>{{os.customer_name}}<br>
-  <b>Контактный телефон: </b>{{os.customer_phone}}<br>
-  <b>Адрес доставки: </b>{{os.delivery_adress}}<br>
-  <b>Коментарий: </b>{{os.comment}}<br>
-</div>
-<div>
-  <p>Ваш заказ в обработке</p>
-</div>
-<div>
-  <a routerLink="/" class="btn btn-default btn-lg active btn-block" role="button">
-    Вернуться к списку товаров
-  </a>
+<div class="order-component">
+  <h3>Заказ № {{os.code}}</h3>
+  <app-deal-table [data]='cartData'></app-deal-table>
+  <div>
+    <b>Получатель </b>{{os.customer_name}}<br>
+    <b>Контактный телефон: </b>{{os.customer_phone}}<br>
+    <b>Адрес доставки: </b>{{os.delivery_adress}}<br>
+    <b>Коментарий: </b>{{os.comment}}<br>
+  </div>
+  <div>
+    <p>Ваш заказ в обработке</p>
+  </div>
+  <div>
+    <a routerLink="/" class="btn btn-default btn-lg active btn-block" role="button">
+      Вернуться к списку товаров
+    </a>
+  </div>
 </div>
