@@ -29,9 +29,9 @@ export class CartListComponent implements OnInit {
     this.updateMainPageData();
 */
     // а теперь подписываемся на изменение страницы
-   /* this.ls.deals_listChange.subscribe((deals_list) => {
-      this.updateMainPageData();
-    });*/
+    /* this.ls.deals_listChange.subscribe((deals_list) => {
+       this.updateMainPageData();
+     });*/
   }
 
 
@@ -43,9 +43,14 @@ export class CartListComponent implements OnInit {
     this.cs.incrementNumber(id, n);
   }
 
-  number_change(id: number, n: number) {
+  /* number_change(id: number, n: number) {
 
-    this.cs.changeNumber(id, n);
+     this.cs.changeNumber(id, n);
+   }*/
+
+  number_change(event) {
+    // console.log('event', event);
+    this.cs.changeNumber(event.id, event.n);
   }
 
   create_order() {

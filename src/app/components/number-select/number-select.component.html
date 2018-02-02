@@ -1,0 +1,24 @@
+<!--
+<form class="number-select-component form-inline">
+  <div class="form-group" >
+    <div class="input-group">
+      <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, -1)">
+        <i class="fa fa-minus" aria-hidden="true"></i>
+      </div>
+      <input type="text"
+             [value]="value"
+             disabled
+             style="text-align: center">
+
+      <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, 1)">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</form>
+-->
+<div class="number-select-component" fxLayout="row nowrap">
+  <div fxFlex="30px" class="number-select-button" (click)="incrementNumber(-1)"><i class="fa fa-minus" aria-hidden="true"></i></div>
+  <div fxFlex="auto" class="number-select-value">{{innerValue}}</div>
+  <div fxFlex="30px" class="number-select-button" (click)="incrementNumber(1)"><i class="fa fa-plus" aria-hidden="true"></i></div>
+</div>

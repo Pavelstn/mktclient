@@ -1,49 +1,65 @@
 <div class="cart_list_component">
-  <div fxLayout="row nowrap" fxLayout.xs="column" class="cart_item" *ngFor="let item of cartData.l; let i= index;">
+  <div fxHide.xs="true">
+    <div fxLayout="row nowrap" fxLayout.xs="column" class="cart_item" *ngFor="let item of cartData.l; let i= index;">
 
-    <div fxFlex="auto"><img src="{{item.i}}" class="cart_image"></div>
-    <!-- <div fxFlex="auto">{{item.t}} ({{item.c}} руб)</div>-->
-    <div fxFlex="auto">
-      <div fxLayout="column" fxLayoutAlign="center" style="height: 100%;">
-        <div fxFlex="10%">{{item.t}} ({{item.c}} руб)</div>
-        <div fxFlex="10%">
-          <div fxLayout="row">
-            <div fxFlex="50">
-              <form class="form-inline">
-                <div class="form-group" style="margin-bottom: 0px;">
-                  <div class="input-group" style=" margin-bottom: 0px;">
-                    <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, -1)">
-                      <i class="fa fa-minus" aria-hidden="true"></i>
-                    </div>
-                    <input type="text"
-                           class="wide_form"
-                           [value]="cartData.l[i].a"
-                           disabled
-                           style="text-align: center">
+      <div fxFlex="auto"><img src="{{item.i}}" class="cart_image"></div>
+     <div fxFlex="auto">{{item.t}} ({{item.c}} руб)</div>
+      <div fxFlex="auto">
+        <div fxLayout="column" fxLayoutAlign="center" style="height: 100%;">
+          <div fxFlex="10%">{{item.t}} ({{item.c}} руб)</div>
+          <div fxFlex="10%">
+            <div fxLayout="row">
+              <div fxFlex="50">
+                <form class="form-inline">
+                  <div class="form-group" style="margin-bottom: 0px;">
+                    <div class="input-group" style=" margin-bottom: 0px;">
+                      <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, -1)">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                      </div>
+                      <input type="text"
+                             class="wide_form"
+                             [value]="cartData.l[i].a"
+                             disabled
+                             style="text-align: center">
 
-                    <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, 1)">
-                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      <div class="input-group-addon hand_on_hover" (click)="incrementNumber(item.id, 1)">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
+              <div fxFlex="50" class="d-flex align-items-center justify-content-end">{{item.c* item.a}} руб</div>
             </div>
-            <div fxFlex="50" class="d-flex align-items-center justify-content-end">{{item.c* item.a}} руб</div>
           </div>
         </div>
+
       </div>
+      <div fxFlex="10%" class="d-flex align-items-center">
 
-    </div>
-    <div fxFlex="10%" class="d-flex align-items-center">
-
-      <button type="button"
-              class="btn btn-light"
-              title="Удалить товар из корзины"
-              (click)="delete_item(item.id)">
-        <i class="fa fa-times" aria-hidden="true"></i>
-      </button>
+        <button type="button"
+                class="btn btn-light"
+                title="Удалить товар из корзины"
+                (click)="delete_item(item.id)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </div>
+
+
+  <div fxHide.xl="true"
+       fxHide.lg="true"
+       fxHide.md="true"
+       fxHide.sm="true">
+    <app-cart-item-mobile *ngFor="let item of cartData.l; let i= index;"
+                          [data]="item"
+                          [value]="cartData.l[i].a"
+                          (number_change)="number_change($event)"
+                          (delete_item)="delete_item($event)">
+    </app-cart-item-mobile>
+  </div>
+
 
   <div fxLayout="row nowrap" fxLayout.xs="column" style="margin-top: 10px;">
     <div fxFlex="auto">
