@@ -20,12 +20,14 @@
       {{data.c* data.a}} руб
     </div>
     <div fxFlex="50px"
-         fxLayoutAlign="center center"
-         title="Удалить товар из корзины"
-         (click)="delete()"
-         style="text-align: center;"
-         class="cart-item-delete-button">
-      <i class="fa fa-trash"></i>
+         fxLayoutAlign="center center">
+      <button
+        type="button"
+        class="btn btn-light btn-sm"
+        (click)="delete()"
+        title="Удалить товар из корзины">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 <!--</div>-->

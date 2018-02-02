@@ -1,33 +1,38 @@
-<div class="cart-item-mobile-component">
-  <div fxLayout="row nowrap">
-    <div fxFlex="30%">
-      <img src="{{data.i}}" class="cart-moble-image">
-    </div>
-    <div fxFlex="auto">
-      <div fxLayout="column" fxFlexAlign="space-between" class="cart-item-mobile-text-column">
-        <div fxFlex="auto" class="cart-item-mobile-desc">{{data.t}} ({{data.c}} руб)</div>
-    <!--    <div fxFlex="auto">{{data.c* data.a}} руб</div>-->
-        <div fxFlex="auto">
-          <div fxLayout="row" fxLayoutAlign="space-between" >
-            <div fxFlex="100px">
-              <app-number-select
-                [min]="1"
-                [max]="10000"
-                [(ngModel)]="value"
-                (ngModelChange)="change()">
-              </app-number-select>
-            </div>
-            <div fxFlex="auto" style="text-align: center">{{data.c* data.a}} руб</div>
-            <div fxFlex="50px"
-                 title="Удалить товар из корзины"
-                 (click)="delete()"
-                 style="text-align: center;"
-                 class="cart-item-mobile-delete-button">
-              <i class="fa fa-trash"></i>
-            </div>
+<div fxLayout="row nowrap" class="cart-item-mobile-component">
+  <div fxFlex="90px" fxLayoutAlign="start center">
+    <img src="{{data.i}}" class="cart-moble-image">
+  </div>
+  <div fxFlex="auto">
+    <div fxLayout="column" fxFlexAlign="space-between" class="cart-item-mobile-text-column">
+      <div fxFlex="auto" class="cart-item-mobile-desc">{{data.t}} ({{data.c}} руб)</div>
+      <!--    <div fxFlex="auto">{{data.c* data.a}} руб</div>-->
+      <div fxFlex="auto">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <div fxFlex="110px" fxLayoutAlign="center center">
+            <app-number-select
+              [min]="1"
+              [max]="10000"
+              [(ngModel)]="value"
+              (ngModelChange)="change()">
+            </app-number-select>
           </div>
-
+          <div fxFlex="auto"
+               fxLayoutAlign="center center">
+            {{data.c* data.a}} руб
+          </div>
+          <div
+            fxFlex="50px"
+            fxLayoutAlign="center center">
+            <button
+              type="button"
+              class="btn btn-light btn-sm"
+              (click)="delete()"
+              title="Удалить товар из корзины">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
+
       </div>
     </div>
   </div>

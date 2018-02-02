@@ -15,7 +15,7 @@ export class CartListComponent implements OnInit {
   constructor(private cs: CartService, private titleService: Title, public router: Router, private ls: LoadDataService) {
     this.cs.cartChange.subscribe((cartList) => {
       this.cartData = cartList;
-      console.log('this.cartData', this.cartData);
+      // console.log('this.cartData', this.cartData);
       this.titleService.setTitle('Корзина');
     });
   }
