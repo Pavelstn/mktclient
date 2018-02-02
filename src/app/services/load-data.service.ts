@@ -26,7 +26,7 @@ export class LoadDataService {
     this.deals_listChange = new EventEmitter();
     this.pagesChange = new EventEmitter();
 
-    this.url = `${this.config.dataServer}/api/index/${this.config.shop_id.toString()}?callback=JSONP_CALLBACK`;
+    this.url = `${this.config.dataServer}/api/index/${this.config.token}?callback=JSONP_CALLBACK`;
   }
 
   getMainPage() {
@@ -38,7 +38,7 @@ export class LoadDataService {
 
   getPage(deal_id) {
     this.ss.show();
-    this.jsonp.get(`${this.config.dataServer}/api/page/${this.config.shop_id.toString()}/${deal_id}?callback=JSONP_CALLBACK`)
+    this.jsonp.get(`${this.config.dataServer}/api/page/${this.config.token}/${deal_id}?callback=JSONP_CALLBACK`)
       .subscribe((data) => {
       this.emitUpdateData(data.json());
     });

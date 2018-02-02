@@ -52,7 +52,7 @@ export class CheckoutComponent implements OnInit {
     }
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let params = new URLSearchParams();
-    params.append('shop_id', this.config.shop_id.toString());
+    params.append('token', this.config.token.toString());
     params.append('orderform', JSON.stringify(this.orderForm.value));
     params.append('cartlist', JSON.stringify(sendcartList));
 
