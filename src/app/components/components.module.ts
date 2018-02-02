@@ -14,6 +14,7 @@ import {SmallCardComponent} from './small-card/small-card.component';
 import {CartWidgetComponent} from './cart-widget/cart-widget.component';
 import { CartItemMobileComponent } from './cart-item-mobile/cart-item-mobile.component';
 import { NumberSelectComponent } from './number-select/number-select.component';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { NumberSelectComponent } from './number-select/number-select.component';
     SmallCardComponent,
     CartItemMobileComponent,
     NumberSelectComponent,
+    CartItemComponent,
   ],
   declarations: [
     DealTableComponent,
@@ -43,6 +45,7 @@ import { NumberSelectComponent } from './number-select/number-select.component';
     SmallCardComponent,
     CartItemMobileComponent,
     NumberSelectComponent,
+    CartItemComponent,
   ]
 })
 export class ComponentsModule {

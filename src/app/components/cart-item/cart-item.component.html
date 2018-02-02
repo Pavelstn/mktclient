@@ -1,0 +1,31 @@
+<!--<div class="cart-item-component">-->
+  <div fxLayout="row nowrap" class="cart-item-component">
+    <div fxFlex="80px" fxLayoutAlign="start center">
+      <img src="{{data.i}}" class="cart-item-image">
+    </div>
+    <div fxFlex="auto"
+         fxLayoutAlign="start center"
+         class="cart-item-desc">
+      {{data.t}} ({{data.c}} руб)
+    </div>
+    <div fxFlex="120px" fxLayoutAlign="center center">
+      <app-number-select
+        [min]="1"
+        [max]="10000"
+        [(ngModel)]="value"
+        (ngModelChange)="change()">
+      </app-number-select>
+    </div>
+    <div fxFlex="150px" fxLayoutAlign="center center">
+      {{data.c* data.a}} руб
+    </div>
+    <div fxFlex="50px"
+         fxLayoutAlign="center center"
+         title="Удалить товар из корзины"
+         (click)="delete()"
+         style="text-align: center;"
+         class="cart-item-delete-button">
+      <i class="fa fa-trash"></i>
+    </div>
+  </div>
+<!--</div>-->

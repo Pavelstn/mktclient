@@ -1,6 +1,6 @@
 <div class="cart_list_component">
   <div fxHide.xs="true">
-    <div fxLayout="row nowrap" fxLayout.xs="column" class="cart_item" *ngFor="let item of cartData.l; let i= index;">
+    <!--<div fxLayout="row nowrap" fxLayout.xs="column" class="cart_item" *ngFor="let item of cartData.l; let i= index;">
 
       <div fxFlex="auto"><img src="{{item.i}}" class="cart_image"></div>
      <div fxFlex="auto">{{item.t}} ({{item.c}} руб)</div>
@@ -44,7 +44,15 @@
           <i class="fa fa-times" aria-hidden="true"></i>
         </button>
       </div>
-    </div>
+    </div>-->
+    <app-cart-item
+      *ngFor="let item of cartData.l; let i= index;"
+      [data]="item"
+      [value]="cartData.l[i].a"
+      (number_change)="number_change($event)"
+      (delete_item)="delete_item($event)">
+
+    </app-cart-item>
   </div>
 
 
@@ -52,11 +60,12 @@
        fxHide.lg="true"
        fxHide.md="true"
        fxHide.sm="true">
-    <app-cart-item-mobile *ngFor="let item of cartData.l; let i= index;"
-                          [data]="item"
-                          [value]="cartData.l[i].a"
-                          (number_change)="number_change($event)"
-                          (delete_item)="delete_item($event)">
+    <app-cart-item-mobile
+      *ngFor="let item of cartData.l; let i= index;"
+      [data]="item"
+      [value]="cartData.l[i].a"
+      (number_change)="number_change($event)"
+      (delete_item)="delete_item($event)">
     </app-cart-item-mobile>
   </div>
 
