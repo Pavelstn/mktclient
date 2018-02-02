@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+/*import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 
 
 @Component({
@@ -26,4 +26,18 @@ export class CartItemMobileComponent implements OnInit {
     this.delete_item.emit(this.data.id);
   }
 
+}*/
+import {Component, OnInit} from '@angular/core';
+import {CartItemComponent} from '../cart-item/cart-item.component';
+
+@Component({
+  selector: 'app-cart-item-mobile',
+  templateUrl: './cart-item-mobile.component.html',
+  styleUrls: ['./cart-item-mobile.component.sass']
+})
+
+export class CartItemMobileComponent extends CartItemComponent {
+  constructor() {
+    super();
+  }
 }
