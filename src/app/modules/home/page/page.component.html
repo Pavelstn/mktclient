@@ -11,7 +11,8 @@
       <h1>{{page.title}}</h1>
     </div>
 
-    <div fxFlex="50%" fxflex.xs="100%">
+ <!--   <div fxFlex="50%" fxflex.xs="100%" (swipeleft)="swipe( $event.type)" (swiperight)="swipe( $event.type)" >-->
+    <div fxFlex="50%" fxflex.xs="100%" >
       <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
     </div>
     <div fxFlex="50%" fxflex.xs="100%" class="content-place">

@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {ReactiveFormsModule} from '@angular/forms';
+// import {HammerGestureConfig, HAMMER_GESTURE_CONFIG} from '@angular/platform-browser';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {HomeModule} from './modules/home/home.module';
 import {LandingModule} from './modules/landing/landing.module';
@@ -15,6 +16,12 @@ import {ConfigService} from './services/config.service';
 import {CartService} from './services/cart.service';
 import {OrderService} from './services/order.service';
 import {SplashScreenService} from './services/splash-screen.service';
+
+/*export class MyHammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    'swipe': {velocity: 0.4, threshold: 20} // override default settings
+  }
+}*/
 
 @NgModule({
   declarations: [
@@ -35,4 +42,15 @@ import {SplashScreenService} from './services/splash-screen.service';
   providers: [LoadDataService, ConfigService, CartService, OrderService, SplashScreenService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+
+/*
+
+
+, {
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: MyHammerConfig
+  }
+ */

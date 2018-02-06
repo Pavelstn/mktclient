@@ -54,7 +54,10 @@ export class PageComponent implements OnInit {
         width: '100%',
         height: '600px',
         thumbnailsColumns: 4,
-        imageAnimation: NgxGalleryAnimation.Slide
+        imageAnimation: NgxGalleryAnimation.Slide,
+        imageArrowsAutoHide: false,
+        imageSwipe: true,
+        previewSwipe: true
       },
       // max-width 800
       {
@@ -64,15 +67,23 @@ export class PageComponent implements OnInit {
         imagePercent: 80,
         thumbnailsPercent: 20,
         thumbnailsMargin: 20,
-        thumbnailMargin: 20
+        thumbnailMargin: 20,
+        imageSwipe: true,
+        previewSwipe: true
       },
       // max-width 400
       {
         breakpoint: 400,
-        preview: false
+        preview: false,
+        imageSwipe: true,
+        previewSwipe: true
       }
     ];
     this.pageUnlock = true;
+  }
+
+  swipe(event){
+    console.log('event', event);
   }
 
 }
