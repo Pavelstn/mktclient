@@ -1,80 +1,70 @@
 <div class="checkout-component">
   <form [formGroup]="orderForm" novalidate (ngSubmit)="submitForm()">
-  <div fxLayout="column">
-    <div fxFlex="auto">
-      <app-deal-table [data]='cartData'></app-deal-table>
+    <div fxLayout="column">
+      <div fxFlex="auto">
+        <app-deal-table [data]='cartData'></app-deal-table>
+      </div>
+      <div fxFlex="auto">
+        <div class="form-group">
+          <label for="customer_name">
+            Имя/Отчество
+            <sup
+              style="color: red;"
+              *ngIf="!orderForm.controls['customer_name'].valid"
+              title="Обязательно для заполнения"
+              class="hand_on_hover">
+              *
+            </sup>
+          </label>
+          <input type="text" class="form-control" id="customer_name" placeholder="Имя/Отчество"
+                 formControlName="customer_name">
+        </div>
+        <div class="form-group">
+          <label for="customer_name">
+            Как с вами связаться
+            <sup
+              style="color: red;"
+              *ngIf="!orderForm.controls['customer_phone'].valid"
+              title="Обязательно для заполнения"
+              class="hand_on_hover">
+              *
+            </sup>
+          </label>
+          <input type="text" class="form-control" id="customer_phone"
+                 placeholder="Адрес электронной почты или номер телефона" formControlName="customer_phone">
+        </div>
+        <div class="form-group">
+          <label for="customer_name">
+            Адрес доставки
+            <sup
+              style="color: red;"
+              *ngIf="!orderForm.controls['delivery_adress'].valid"
+              title="Обязательно для заполнения"
+              class="hand_on_hover">
+              *
+            </sup>
+          </label>
+          <input type="text" class="form-control" id="delivery_adress" placeholder="Адрес доставки"
+                 formControlName="delivery_adress">
+        </div>
+        <div class="form-group">
+          <label for="comment">Комментарии к заказу</label>
+          <textarea class="form-control" id="comment" rows="3" formControlName="comment"></textarea>
+        </div>
+        <small class="form-text text-muted">
+          <span style="color: red;">*</span>- Поля обязательные для заполнения.
+        </small>
+      </div>
+      <div fxFlex="auto" fxLayout.xs="column" fxLayout="row nowrap" fxLayoutGap="10%" fxLayoutAlign="space-between">
+        <div fxFlex="auto" fxFlexOrder.xs="2">
+          <button type="button" routerLink="/home/cart" class="btn  btn-block">Вернуться назад</button>
+        </div>
+        <div fxFlex="auto" fxFlexOrder.xs="1">
+          <button type="submit" class="btn btn-primary btn-block"
+                  [disabled]="!orderForm.valid|| cartData.s<=0|| sendDataInProgress">Оформить заказ
+          </button>
+        </div>
+      </div>
     </div>
-    <div fxFlex="auto">
-      <div class="form-group">
-        <label for="customer_name">
-          Имя/Отчество
-          <sup
-            style="color: red;"
-            *ngIf="!orderForm.controls['customer_name'].valid"
-            title="Обязательно для заполнения"
-            class="hand_on_hover">
-            *
-          </sup>
-        </label>
-        <input type="text" class="form-control" id="customer_name" placeholder="Имя/Отчество"
-               formControlName="customer_name">
-      </div>
-      <div class="form-group">
-        <label for="customer_name">
-          Как с вами связаться
-          <sup
-            style="color: red;"
-            *ngIf="!orderForm.controls['customer_phone'].valid"
-            title="Обязательно для заполнения"
-            class="hand_on_hover">
-            *
-          </sup>
-        </label>
-        <input type="text" class="form-control" id="customer_phone"
-               placeholder="Адрес электронной почты или номер телефона" formControlName="customer_phone">
-      </div>
-      <div class="form-group">
-        <label for="customer_name">
-          Адрес доставки
-          <sup
-            style="color: red;"
-            *ngIf="!orderForm.controls['delivery_adress'].valid"
-            title="Обязательно для заполнения"
-            class="hand_on_hover">
-            *
-          </sup>
-        </label>
-        <input type="text" class="form-control" id="delivery_adress" placeholder="Адрес доставки"
-               formControlName="delivery_adress">
-      </div>
-      <div class="form-group">
-        <label for="comment">Комментарии к заказу</label>
-        <textarea class="form-control" id="comment" rows="3" formControlName="comment"></textarea>
-      </div>
-      <small class="form-text text-muted">
-        <span style="color: red;">*</span>- Поля обязательные для заполнения.
-      </small>
-    </div>
-    <div fxFlex="auto" fxLayout.xs="column" fxLayout="row nowrap" fxLayoutGap="10%" fxLayoutAlign="space-between">
-      <div fxFlex="auto" fxFlexOrder.xs="2"><button type="button" routerLink="/home/cart" class="btn  btn-block">Вернуться назад</button></div>
-      <div fxFlex="auto" fxFlexOrder.xs="1"><button type="submit" class="btn btn-primary btn-block" [disabled]="!orderForm.valid|| cartData.s<=0|| sendDataInProgress">Оформить заказ</button></div>
-    </div>
-  </div>
   </form>
-
-<!--
-  <div class="deal_table">
-
-  </div>-->
-
-
-
-
-<!--    <div fxLayout="row nowrap" fxFlexAlign="end">
-      <div fxFlex="30%">
-        <button type="button" routerLink="/home/cart" class="btn btn-light">Вернуться назад</button>
-        <button type="submit" class="btn btn-primary" [disabled]="!orderForm.valid|| cartData.s<=0|| sendDataInProgress">Оформить заказ</button>
-      </div>
-    </div>-->
-
 </div>
