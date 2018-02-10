@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {LoadDataService} from '../../services/load-data.service';
 import {Router, NavigationEnd} from '@angular/router';
 import * as $ from 'jquery';
+// import {Title} from '@angular/platform-browser';
+import {TitleService} from '../../services/title.service';
 
 
 @Component({
@@ -14,14 +16,20 @@ export class TopNavComponent implements OnInit {
   public mobileModeMenuShow = false;
   public showAnimate = false;
   public hideAnimate = false;
+  public title = '';
 
-  constructor(public ls: LoadDataService, public router: Router) {
+  constructor(public ls: LoadDataService, public router: Router, private ttls: TitleService) {
   }
 
   ngOnInit() {
     this.categories = this.ls.categories;
     this.ls.categoriesChange.subscribe((categories) => {
       this.categories = this.ls.categories;
+    });
+    // this.title = this.titleService.getTitle();
+    this.title = this.ttls.title;
+    this.ttls.getTitle.subscribe((title) => {
+      this.title = title;
     });
   }
 
@@ -38,7 +46,7 @@ export class TopNavComponent implements OnInit {
   }
 
   public clickLink(url) {
-    console.log('url', url);
+    // console.log('url', url);
     this.router.navigateByUrl(url);
     this.hideMenu();
   }

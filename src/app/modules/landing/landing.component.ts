@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Route} from '@angular/router';
-import {Title} from '@angular/platform-browser';
-
+// import {Title} from '@angular/platform-browser';
+import {TitleService} from '../../services/title.service';
 import {LoadDataService} from '../../services/load-data.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class LandingComponent implements OnInit {
   mainpage = [];
   allSite;
 
-  constructor(private route: ActivatedRoute, private ls: LoadDataService, private titleService: Title) {
+  constructor(private route: ActivatedRoute, private ls: LoadDataService, private titleService: TitleService) {
   }
 
   ngOnInit() {
@@ -26,6 +26,8 @@ export class LandingComponent implements OnInit {
     this.ls.deals_listChange.subscribe((deals_list) => {
       this.updateMainPageData();
     });
+
+    console.log('ngOnInit Главная');
   }
 
 

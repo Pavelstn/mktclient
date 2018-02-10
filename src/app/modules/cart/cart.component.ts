@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart.service';
-import {Title} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
-
+import {TitleService} from '../../services/title.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -11,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class CartComponent implements OnInit {
   public cartData = {l: [], s: 0};
 
-  constructor(private cs: CartService, private titleService: Title, public router: Router) {
+  constructor(private cs: CartService, private titleService: TitleService, public router: Router) {
     this.cs.cartChange.subscribe((cartList) => {
       this.cartData = cartList;
       // console.log('this.cartData', this.cartData);

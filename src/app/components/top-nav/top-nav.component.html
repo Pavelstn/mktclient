@@ -37,23 +37,18 @@
   >
     <div fxFlex="16px">
       <div fxLayout="row nowrap"
-           fxLayoutAlign="space-between"
-           class="mkt-container">
-        <div fxFlex="auto"
-             class="nav_left_item">
-          <div class="dropdown show"
-               style="margin-top: -8px;">
-            <button class="btn btn-link btn-top-menu"
-                    role="button"
-            >
-              <i class="fa fa-bars" aria-hidden="true" *ngIf="!mobileModeMenuShow" (click)="clickButton()"></i>
-              <i class="fa fa-times" aria-hidden="true" *ngIf="mobileModeMenuShow" (click)="clickButton()"></i>
+           fxLayoutAlign="space-between">
+          <div fxFlex="50px">
+            <button
+              class="btn btn-link top-nav-mobile-btn"
+              role="button"
+              (click)="clickButton()">
+              <i class="fa fa-bars" aria-hidden="true" *ngIf="!mobileModeMenuShow"></i>
+              <i class="fa fa-times" aria-hidden="true" *ngIf="mobileModeMenuShow"></i>
             </button>
-
-          </div>
         </div>
-        <div fxFlex="auto"></div>
-        <div fxFlex="auto" class="nav_right_item">
+        <div fxFlex="auto" fxLayoutAlign="center"> {{ (title.length>18)? (title | slice:0:18)+'...':(title) }}</div>
+        <div fxFlex="30%" class="nav_right_item">
           <app-cart-widget></app-cart-widget>
         </div>
       </div>

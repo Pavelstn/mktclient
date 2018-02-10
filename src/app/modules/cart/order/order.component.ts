@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {OrderService} from '../../../services/order.service';
-import {Title} from '@angular/platform-browser';
+import {TitleService} from '../../../services/title.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class OrderComponent implements OnInit {
   public cartData = {l: [], s: 0};
 
   constructor(public os: OrderService,
-              private titleService: Title,
+              private titleService: TitleService,
               public router: Router) {
   }
 

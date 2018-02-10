@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormControl, Validators, FormArray, FormBuilder} from '@angular/forms';
 import {CartService} from '../../../services/cart.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Title} from '@angular/platform-browser';
+import {TitleService} from '../../../services/title.service';
 import {LoadDataService} from '../../../services/load-data.service';
 import {ConfigService} from '../../../services/config.service';
 import {OrderService} from '../../../services/order.service';
@@ -20,12 +20,12 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private cs: CartService,
-              private titleService: Title,
+              private titleService: TitleService,
               public router: Router,
               private ls: LoadDataService,
               private config: ConfigService,
               private os: OrderService) {
-    this.titleService.setTitle('Оформление заказа');
+
 
     this.orderForm = fb.group({
       'customer_name': new FormControl('', [Validators.required]),
@@ -42,6 +42,7 @@ export class CheckoutComponent implements OnInit {
     if (this.cartData.s === 0) {// пустой список, редирект на главную
       this.router.navigate(['/']);
     }
+    this.titleService.setTitle('Оформление заказа');
   }
 
   submitForm() {

@@ -3,8 +3,8 @@ import {ActivatedRoute, Route} from '@angular/router';
 import {LoadDataService} from '../../../services/load-data.service';
 import {CartService} from '../../../services/cart.service';
 import {NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation} from 'ngx-gallery';
-import {Title} from '@angular/platform-browser';
-
+// import {Title} from '@angular/platform-browser';
+import {TitleService} from '../../../services/title.service';
 @Component({
   selector: 'app-page',
   templateUrl: './page.component.html',
@@ -21,12 +21,13 @@ export class PageComponent implements OnInit {
   constructor(private cs: CartService,
               private route: ActivatedRoute,
               private ls: LoadDataService,
-              private titleService: Title) {
+              private titleService: TitleService) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pageUnlock = false;
+      console.log('page', params);
       this.ls.getPage(params['id']);
       this.ls.pagesChange.subscribe((data) => {
         for (const page of this.ls.pages) {

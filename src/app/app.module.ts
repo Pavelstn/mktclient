@@ -16,6 +16,7 @@ import {ConfigService} from './services/config.service';
 import {CartService} from './services/cart.service';
 import {OrderService} from './services/order.service';
 import {SplashScreenService} from './services/splash-screen.service';
+import {TitleService} from './services/title.service';
 
 /*export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -39,7 +40,7 @@ import {SplashScreenService} from './services/splash-screen.service';
     LandingModule,
     CartModule,
   ],
-  providers: [LoadDataService, ConfigService, CartService, OrderService, SplashScreenService],
+  providers: [LoadDataService, ConfigService, CartService, OrderService, SplashScreenService, TitleService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
